@@ -26,4 +26,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = input @ {
+    self,
+    nixpkgs,
+    ...
+  }: let 
+    constants = import ./constant.nix;
+    
+    forEachSystem = func: (nixpkgs.lib.genAttrs constant.allSystems)
 }
