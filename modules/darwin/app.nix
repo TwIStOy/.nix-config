@@ -16,7 +16,8 @@
     onActivation = {
       autoUpdate = false;
 
-      cleanup = "zap";
+      # cleanup = "zap";
+      cleanup = "none";
     };
 
     masApps = { };
@@ -38,7 +39,8 @@
     ];
 
     casks = [
-      "eudic"
+      "1password-cli"
+      "iina"
     ];
   };
 }
