@@ -1,13 +1,17 @@
-{ config
-, lib
-, pkgs
-, ...
-}:
+{ config, lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     git
     gnugrep
     gnutar
+    fish
+  ];
+
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
+  environment.shells = [
+    pkgs.zsh
+    pkgs.fish
   ];
 
   homebrew = {
