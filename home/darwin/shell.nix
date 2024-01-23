@@ -1,8 +1,10 @@
 let
   envExtra = ''
     export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+    source "$HOME/.cargo/env"
   '';
-in {
+in
+{
   programs.bash = {
     enable = true;
     bashrcExtra = envExtra;
