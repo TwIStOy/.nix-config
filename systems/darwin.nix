@@ -19,5 +19,15 @@ in
         }
       ]
     );
+    yukikaze = macosSystem (
+      attrs.mergeAttrsList [
+        base_arg
+        darwin_yukikaze_modules
+        {
+          system = allSystemAttrs.aarch64_darwin;
+          specialArgs = allSystemSpecialArgs.aaarch64_darwin;
+        }
+      ]
+    );
   };
 }
