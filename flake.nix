@@ -40,7 +40,7 @@
         inherit self inputs constants;
       };
     in
-    allSystemConfigurations;
+    allSystemConfigurations { };
 
   nixConfig = {
     # substituers will be appended to the default substituters when fetching packages
