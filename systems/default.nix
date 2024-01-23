@@ -1,8 +1,4 @@
-{ self
-, inputs
-, constants
-,
-}:
+{ self, inputs, constants, }:
 let
   inherit (inputs.nixpkgs) lib;
   mylib = import ../lib { inherit lib; };

@@ -29,6 +29,9 @@
       "homebrew/cask-fonts"
       "homebrew/services"
       "homebrew/cask-versions"
+      "osx-cross/avr"
+      "osx-cross/arm"
+      "qmk/qmk"
     ];
 
     brews = [

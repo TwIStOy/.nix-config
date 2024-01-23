@@ -1,12 +1,4 @@
-{ nixpkgs
-, nix-darwin
-, home-manager
-, system
-, specialArgs
-, darwin-modules
-, home-module
-,
-}:
+{ nixpkgs, nix-darwin, home-manager, system, specialArgs, darwin-modules, home-module, }:
 let
   inherit (specialArgs) username;
 in
