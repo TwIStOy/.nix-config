@@ -3,7 +3,7 @@ rec {
   userfullname = "Hawtian Wang";
   useremail = "twistoy.wang@gmail.com";
 
-  allSystemAttr = {
+  allSystemAttrs = {
     # linux systems
     x64_system = "x86_64-linux";
     aarch64_system = "aarch64-linux";
