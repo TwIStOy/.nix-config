@@ -4,7 +4,7 @@
       ../hosts/darwin_yamato
       ../modules/darwin
     ];
-    homemanager-imports = [
+    home-module.imports = [
       ../hosts/darwin_yamato/home.nix
       ../home/darwin
     ];
