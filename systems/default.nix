@@ -1,7 +1,10 @@
-{ self, inputs, constants, }:
-let
+{
+  self,
+  inputs,
+  constants,
+}: let
   inherit (inputs.nixpkgs) lib;
-  mylib = import ../lib { inherit lib; };
+  mylib = import ../lib {inherit lib;};
   vars = import ./vars.nix;
 
   specialArgsForSystem = system:
@@ -9,12 +12,14 @@ let
       inherit (constants) username userfullname useremail;
       inherit mylib;
 
-      pkgs-unstable = import inputs.nixpkgs-unstable
+      pkgs-unstable =
+        import inputs.nixpkgs-unstable
         {
           inherit system;
           config.allowUnfree = true;
         };
-      pkgs-stable = import inputs.nixpkgs-stable
+      pkgs-stable =
+        import inputs.nixpkgs-stable
         {
           inherit system;
           config.allowUnfree = true;
@@ -33,6 +38,6 @@ let
     }
   ];
 in
-mylib.attrs.mergeAttrsList [
-  (import ./darwin.nix args)
-]
+  mylib.attrs.mergeAttrsList [
+    (import ./darwin.nix args)
+  ]

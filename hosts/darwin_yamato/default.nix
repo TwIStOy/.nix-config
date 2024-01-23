@@ -1,5 +1,4 @@
-_:
-let
+_: let
   hostname = "yamato";
 in {
   networking.hostName = hostname;

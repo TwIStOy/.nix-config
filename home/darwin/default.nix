@@ -1,6 +1,4 @@
-{ mylib
-, ...
-}: {
+{mylib, ...}: {
   imports = [
     ../common/server
     ../common/core.nix

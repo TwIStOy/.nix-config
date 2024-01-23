@@ -1,8 +1,6 @@
-_:
-let
+_: let
   hostname = "yukikaze";
-in
-{
+in {
   networking.hostName = hostname;
   networking.computerName = hostname;
   system.defaults.smb.NetBIOSName = hostname;

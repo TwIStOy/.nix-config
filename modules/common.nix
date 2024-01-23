@@ -1,9 +1,9 @@
 # Common configuration for both darwin and nixos
-
-{ username
-, userfullname
-, ...
-} @args: {
+{
+  username,
+  userfullname,
+  ...
+} @ args: {
   users.users.${username} = {
     description = userfullname;
     openssh.authorizedKeys.keys = [
@@ -12,7 +12,7 @@
   };
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    trusted-users = [ username ];
+    experimental-features = ["nix-command" "flakes"];
+    trusted-users = [username];
   };
 }

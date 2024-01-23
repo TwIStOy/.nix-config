@@ -6,8 +6,7 @@ with allSystemAttrs; let
     inherit nix-darwin home-manager;
     nixpkgs = nixpkgs-darwin;
   };
-in
-{
+in {
   darwinConfigurations = {
     yamato = macosSystem (
       attrs.mergeAttrsList [

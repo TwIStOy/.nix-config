@@ -27,17 +27,24 @@
     };
   };
 
-  outputs =
-    inputs @ { self , nixpkgs , ...  }:
-    let
-      constants = import ./constant.nix;
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    ...
+  }: let
+    constants = import ./constant.nix;
 
-      forEachSystem = func: (nixpkgs.lib.genAttrs constants.allSystems func);
-      allSystemConfigurations = import ./systems {
-        inherit self inputs constants;
-      };
-    in
-    allSystemConfigurations;
+    forEachSystem = func: (nixpkgs.lib.genAttrs constants.allSystems func);
+    allSystemConfigurations = import ./systems {
+      inherit self inputs constants;
+    };
+  in
+    allSystemConfigurations
+    // {
+      formatter = forEachSystem (
+        system: nixpkgs.legacyPackages.${system}.alejandra
+      );
+    };
 
   nixConfig = {
     # substituers will be appended to the default substituters when fetching packages

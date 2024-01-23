@@ -1,5 +1,4 @@
-{ username, ... }:
-{
+{username, ...}: {
   home = {
     inherit username;
 

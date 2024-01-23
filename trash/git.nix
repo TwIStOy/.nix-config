@@ -1,9 +1,10 @@
-{ config
-, lib
-, pkgs
-, userfullname
-, useremail
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  userfullname,
+  useremail,
+  ...
 }: {
   home.packages = with pkgs; [
   ];

@@ -1,6 +1,4 @@
-{ pkgs
-, ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     neofetch
 
@@ -14,4 +12,6 @@
 
     just
   ];
+
+  programs.nix-index.enable = true;
 }

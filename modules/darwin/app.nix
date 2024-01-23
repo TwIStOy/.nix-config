@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     git
     gnugrep
@@ -23,7 +27,7 @@
       cleanup = "none";
     };
 
-    masApps = { };
+    masApps = {};
 
     taps = [
       "homebrew/cask-fonts"
