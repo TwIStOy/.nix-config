@@ -13,6 +13,7 @@
     just
 
     zoxide
+    eza
   ];
 
   programs.nix-index.enable = true;
