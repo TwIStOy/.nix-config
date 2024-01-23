@@ -8,7 +8,7 @@
     tldr
 
     zip
-    sz
+    xz
     unzip
     p7zip
 
