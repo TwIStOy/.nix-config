@@ -1,14 +1,15 @@
-alias d := darwin
-
-darwin:
+ya:
   nix build .#darwinConfigurations.yamato.system \
     --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yamato
 
-darwin-debug:
-  nix build .#darwinConfigurations.yamato.system \
+yu:
+  nix build .#darwinConfigurations.yukikaze.system \
     --extra-experimental-features 'nix-command flakes'
-  ./result/sw/bin/darwin-rebuild switch --flake .#yamato --show-trace --verbose
+  ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze
+
+up:
+  nix flake update
 
 commit:
   git add --all

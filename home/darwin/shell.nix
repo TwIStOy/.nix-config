@@ -13,4 +13,7 @@ in
     enable = true;
     inherit envExtra;
   };
+  programs.fish = {
+    enable = true;
+  };
 }

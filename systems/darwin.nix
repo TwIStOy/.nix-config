@@ -25,7 +25,7 @@ in
         darwin_yukikaze_modules
         {
           system = allSystemAttrs.aarch64_darwin;
-          specialArgs = allSystemSpecialArgs.aaarch64_darwin;
+          specialArgs = allSystemSpecialArgs.aarch64_darwin;
         }
       ]
     );
