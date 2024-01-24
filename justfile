@@ -11,9 +11,10 @@ yu:
 up:
   nix flake update
 
-commit:
+push:
   git add --all
   git commit -m '...'
+  git push
 
 gc:
   # garbage collect all unused nix store entries

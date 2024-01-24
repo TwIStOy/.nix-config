@@ -14,5 +14,11 @@
     nodePackages.nodejs
     nodePackages.typescript
     nodePackages.typescript-language-server
+
+    # rust
+    rust-analyzer
+    cargo
+    rustc
+    rustfmt
   ];
 }
