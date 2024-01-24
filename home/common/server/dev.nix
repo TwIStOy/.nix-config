@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     cmake
     cmake-language-server
@@ -8,7 +7,11 @@
     gcc
 
     # nix
+    nil
     nixd
+    statix
+    deadnix
+    alejandra
 
     # js/ts
     nodePackages.nodejs

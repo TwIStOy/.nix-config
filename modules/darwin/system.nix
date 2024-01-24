@@ -50,7 +50,7 @@
         # sets how fast it repeats once it starts.
         KeyRepeat = 3; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
 
-        ApplePressAndHoldEnabled = true; # enable press and hold
+        ApplePressAndHoldEnabled = false; # enable press and hold
 
         NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
         NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)
@@ -59,6 +59,21 @@
         NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction(自动拼写检查)
         NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
         NSNavPanelExpandedStateForSaveMode2 = true;
+      };
+
+      CustomUserPreferences = {
+        "com.microsoft.VSCode" = {
+          ApplePressAndHoldEnabled = false;
+        };
+        "com.microsoft.VSCodeInsiders" = {
+          ApplePressAndHoldEnabled = false;
+        };
+        "com.vscodium" = {
+          ApplePressAndHoldEnabled = false;
+        };
+        "com.microsoft.VSCodeExploration" = {
+          ApplePressAndHoldEnabled = false;
+        };
       };
     };
   };
