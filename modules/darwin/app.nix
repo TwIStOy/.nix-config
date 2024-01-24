@@ -54,6 +54,8 @@
       "arc"
       "google-chrome"
       "visual-studio-code"
+      "telegram"
+      "discord"
     ];
   };
 }
