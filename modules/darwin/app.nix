@@ -53,6 +53,7 @@
       "iina"
       "arc"
       "google-chrome"
+      "visual-studio-code"
     ];
   };
 }
