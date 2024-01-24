@@ -16,6 +16,8 @@
     eza
     (ripgrep.override {withPCRE2 = true;})
     hyperfine
+    fd
+    skim
 
     curl
     wget

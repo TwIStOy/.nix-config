@@ -21,5 +21,8 @@
     gst = "git status";
     gd = "git diff";
     glg = "git log --graph";
+    gaa = "git add --all";
+    gcm = "git commit -m";
+    gp = "git push";
   };
 }
