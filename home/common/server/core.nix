@@ -17,7 +17,6 @@
 
     curl
     wget
-    make
   ];
 
   programs.nix-index.enable = true;
