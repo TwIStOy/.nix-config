@@ -5,6 +5,7 @@
     gnumake
 
     gcc
+    clang-tools
 
     # nix
     nil
@@ -17,11 +18,27 @@
     nodePackages.nodejs
     nodePackages.typescript
     nodePackages.typescript-language-server
+    nodePackages.prettier # common code formatter
 
     # rust
     rust-analyzer
     cargo
     rustc
     rustfmt
+
+    # python
+    nodePackages.pyright # python language server
+
+    # golang
+    go
+    gotools
+    gopls
+
+    # lua
+    stylua
+    lua-language-server
+
+    # Others
+    taplo # TOML language server / formatter / validator
   ];
 }
