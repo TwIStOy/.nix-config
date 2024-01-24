@@ -14,6 +14,10 @@
 
     zoxide
     eza
+
+    curl
+    wget
+    make
   ];
 
   programs.nix-index.enable = true;
