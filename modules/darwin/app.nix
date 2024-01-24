@@ -51,6 +51,8 @@
     casks = [
       "1password-cli"
       "iina"
+      "arc"
+      "google-chrome"
     ];
   };
 }
