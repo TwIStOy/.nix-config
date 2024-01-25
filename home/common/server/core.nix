@@ -32,7 +32,6 @@
 
     lazygit
     xclip
-    unrar
     tmux
   ];
 

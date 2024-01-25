@@ -12,6 +12,10 @@
       inherit (constants) username userfullname useremail;
       inherit mylib;
 
+      pkgs-darwin = import inputs.nixpkgs-darwin {
+        inherit system;
+        config.allowUnfree = true;
+      };
       pkgs-unstable =
         import inputs.nixpkgs-unstable
         {
