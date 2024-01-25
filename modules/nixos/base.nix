@@ -7,4 +7,10 @@
       "wheel"
     ];
   };
+  security.sudo.extraRules = [
+    {
+      users = ["${username}"];
+      options = ["NOPASSWD"];
+    }
+  ];
 }
