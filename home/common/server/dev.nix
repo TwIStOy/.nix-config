@@ -1,14 +1,12 @@
 {pkgs, ...}: let
   build-tools = with pkgs; [
     gcc
-    binutils
     gnumake
     ninja
   ];
 
   cpp-tools = with pkgs; [
     gcc
-    gdb
     cmake
     cmake-language-server
     clang-tools

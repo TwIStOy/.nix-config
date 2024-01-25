@@ -38,11 +38,18 @@
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # add git hooks to format nix code before commit
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
+    pre-commit-hooks,
     ...
   }: let
     constants = import ./constant.nix;
@@ -56,6 +63,17 @@
     // {
       formatter = forEachSystem (
         system: nixpkgs.legacyPackages.${system}.alejandra
+      );
+
+      checks = forEachSystem (
+        system: {
+          pre-commit-check = pre-commit-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              alejandra.enable = true;
+            };
+          };
+        }
       );
     };
 

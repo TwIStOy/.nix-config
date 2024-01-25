@@ -12,9 +12,10 @@
       users = ["${username}"];
       commands = [
         {
-        command = "ALL";
-        options = ["NOPASSWD"];
-      }];
+          command = "ALL";
+          options = ["NOPASSWD"];
+        }
+      ];
     }
   ];
 }
