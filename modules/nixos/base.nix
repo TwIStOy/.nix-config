@@ -10,10 +10,11 @@
   security.sudo.extraRules = [
     {
       users = ["${username}"];
-      commands = {
-        command = ["ALL"];
+      commands = [
+        {
+        command = "ALL";
         options = ["NOPASSWD"];
-      };
+      }];
     }
   ];
 }
