@@ -54,14 +54,11 @@
           pyquery
           pyyaml
 
-          ## emacs's lsp-bridge dependenciesge
-          epc
-          orjson
-          sexpdata
-          six
           setuptools
-          paramiko
-          rapidfuzz
+          qrcode
+          lxml
+          psutil
+          pip
         ]
     ))
   ];

@@ -31,6 +31,9 @@
     yq-go
 
     lazygit
+    xclip
+    unrar
+    tmux
   ];
 
   programs.nix-index.enable = true;
