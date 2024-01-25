@@ -1,9 +1,10 @@
 {
   username,
   pkgs,
+  lib,
   ...
 }: {
-  home.homeDirectory = "/home/${username}";
+  home.homeDirectory = lib.mkForce "/home/${username}";
 
   home.packages = with pkgs; [
     iotop
