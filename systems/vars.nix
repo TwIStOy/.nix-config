@@ -3,6 +3,7 @@
     darwin-modules = [
       ../hosts/darwin_yamato
       ../modules/darwin
+      ../modules/common.nix
     ];
     home-module.imports = [
       ../hosts/darwin_yamato/home.nix
@@ -13,6 +14,7 @@
     darwin-modules = [
       ../hosts/darwin_yukikaze
       ../modules/darwin
+      ../modules/common.nix
     ];
     home-module.imports = [
       ../hosts/darwin_yukikaze/home.nix
@@ -23,6 +25,7 @@
     nixos-modules = [
       ../hosts/nixos_poi
       ../modules/nixos
+      ../modules/common.nix
     ];
     home-module.imports = [
       ../hosts/nixos_poi/home.nix
