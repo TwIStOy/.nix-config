@@ -10,6 +10,9 @@
     enableFishIntegration = true;
 
     settings = {
+      log = {
+        enabled = true;
+      };
       opener = {
         text = [
           {
@@ -50,6 +53,10 @@
           }
           {
             name = "*.ts";
+            use = "text";
+          }
+          {
+            name = "*.nix";
             use = "text";
           }
         ];
