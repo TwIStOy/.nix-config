@@ -3,7 +3,7 @@ with args;
 with mylib;
 with allSystemAttrs; let
   base_arg = {
-    inherit nix-darwin home-manager;
+    inherit nix-darwin home-manager neovim-nightly-overlay;
     nixpkgs = nixpkgs-darwin;
   };
 in {

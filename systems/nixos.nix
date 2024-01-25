@@ -3,8 +3,7 @@ with args;
 with mylib;
 with allSystemAttrs; let
   base_args = {
-    inherit home-manager;
-    inherit nixpkgs;
+    inherit home-manager nixpkgs neovim-nightly-overlay;
   };
 in {
   nixosConfigurations = {

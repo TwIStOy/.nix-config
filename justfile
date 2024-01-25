@@ -6,7 +6,7 @@ ya:
 yu:
   nix build .#darwinConfigurations.yukikaze.system \
     --extra-experimental-features 'nix-command flakes'
-  ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze
+  ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze --show-trace
 
 poi:
   sudo nixos-rebuild switch --flake .#poi --show-trace --verbose

@@ -6,6 +6,7 @@
   specialArgs,
   darwin-modules,
   home-module,
+  ...
 }: let
   inherit (specialArgs) username;
 in

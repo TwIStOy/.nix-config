@@ -11,6 +11,10 @@
     ];
   };
 
+  nixpkgs.overlays = [
+    args.neovim-nightly-overlay.overlay
+  ];
+
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     trusted-users = [username];
