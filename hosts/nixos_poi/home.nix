@@ -1,6 +1,6 @@
 {username, pkgs,...}:
 {
-  users.users."${username}" = {
-    shell = pkgs.fish;
-  };
+  # users.users."${username}" = {
+  #   shell = pkgs.fish;
+  # };
 }
