@@ -9,6 +9,8 @@
     gnugrep
     gnutar
     fish
+
+    # utm
   ];
 
   programs.zsh.enable = true;
