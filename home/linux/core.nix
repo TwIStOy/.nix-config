@@ -12,4 +12,8 @@
 
     tcpdump
   ];
+
+  users.users."${username}" = {
+    shell = pkgs.fish;
+  };
 }
