@@ -26,7 +26,7 @@
     ];
     home-module.imports = [
       ../hosts/nixos_poi/home.nix
-      ../home/linux/desktop.nix
+      ../home/linux/server.nix
     ];
   };
 }
