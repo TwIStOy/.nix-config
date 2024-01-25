@@ -8,6 +8,9 @@ yu:
     --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze
 
+poi:
+  sudo nixos-rebuild switch --flake .#poi --show-trace --verbose
+
 up:
   nix flake update
 
