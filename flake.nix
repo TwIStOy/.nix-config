@@ -25,6 +25,19 @@
       # different versions of nixpkgs dependencies.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland/v0.33.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # community wayland nixpkgs
+    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    # anyrun - a wayland launcher
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
