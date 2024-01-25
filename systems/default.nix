@@ -40,4 +40,5 @@
 in
   mylib.attrs.mergeAttrsList [
     (import ./darwin.nix args)
+    (import ./nixos.nix args)
   ]

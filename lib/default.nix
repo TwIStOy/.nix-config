@@ -1,6 +1,7 @@
 {lib, ...}: {
   attrs = import ./attrs.nix {inherit lib;};
   macosSystem = import ./macosSystem.nix;
+  nixosSystem = import ./nixosSystem.nix;
   scanPaths = path:
     builtins.map
     (f: (path + "/${f}"))

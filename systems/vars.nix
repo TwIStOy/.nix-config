@@ -19,4 +19,14 @@
       ../home/darwin
     ];
   };
+  nixos_poi_modules = {
+    nixos-modules = [
+      ../hosts/nixos_poi
+      ../modules/nixos
+    ];
+    home-module.imports = [
+      ../hosts/nixos_poi/home.nix
+      ../home/linux/desktop.nix
+    ];
+  };
 }
