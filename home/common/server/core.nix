@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     neofetch
+    git
+    vim
 
     rsync
     tldr
