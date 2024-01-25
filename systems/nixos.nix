@@ -6,16 +6,15 @@ with allSystemAttrs; let
     inherit home-manager;
     inherit nixpkgs;
   };
-in
-{
+in {
   nixosConfigurations = {
-    poi = nixosSystem attrs.mergeAttrsList [
+    poi = nixosSystem (attrs.mergeAttrsList [
       base_args
       nixos_poi_modules
       {
         system = allSystemAttrs.aarch64_system;
         specialArgs = allSystemSpecialArgs.aarch64_system;
       }
-    ];
+    ]);
   };
 }

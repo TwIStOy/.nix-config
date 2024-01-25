@@ -1,5 +1,4 @@
-{}:
-{
+{}: {
   imports = [
     ./core.nix
     ./desktop
