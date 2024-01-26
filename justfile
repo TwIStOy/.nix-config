@@ -27,5 +27,11 @@ gc:
   sudo nix store gc --debug
   sudo nix-collect-garbage --delete-old
 
+nvim-clean:
+  rm $HOME/.config/nvim/init.lua
+
+nvim-test: nvim-clean
+  cp home/common/server/neovim/init.lua $HOME/.config/nvim/init.lua
+
 fmt:
   nix fmt

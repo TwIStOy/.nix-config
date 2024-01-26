@@ -41,26 +41,22 @@
 
   python-tools = with pkgs; [
     nodePackages.pyright # python language server
-    (python311.withPackages (
-      ps:
-        with ps; [
-          ruff-lsp
-          black # python formatter
+    python3
+    python3.pkgs.ruff-lsp
+    python3.pkgs.black # python formatter
 
-          jupyter
-          ipython
-          pandas
-          requests
-          pyquery
-          pyyaml
+    python3.pkgs.jupyter
+    python3.pkgs.ipython
+    python3.pkgs.pandas
+    python3.pkgs.requests
+    python3.pkgs.pyquery
+    python3.pkgs.pyyaml
 
-          setuptools
-          qrcode
-          lxml
-          psutil
-          pip
-        ]
-    ))
+    python3.pkgs.setuptools
+    python3.pkgs.qrcode
+    python3.pkgs.lxml
+    python3.pkgs.psutil
+    python3.pkgs.pip
   ];
 
   golang-tools = with pkgs; [
