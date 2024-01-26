@@ -1,4 +1,8 @@
-{pkgs, username, ...}: {
+{
+  pkgs,
+  username,
+  ...
+}: {
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
 

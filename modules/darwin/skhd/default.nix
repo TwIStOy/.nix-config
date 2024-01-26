@@ -10,7 +10,7 @@
   };
 
   # custom log path for debugging
-  launchd.user.agents.skhd= let
+  launchd.user.agents.skhd = let
     homeDir = config.users.users."${username}".home;
   in {
     # https://github.com/LnL7/nix-darwin/issues/406
