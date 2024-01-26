@@ -14,7 +14,7 @@
       };
     }
   ];
-  programs.fish.shellAbbrs = {
+  programs.fish.shellAliases = {
     ll = "eza -l --icons -a --group-directories-first --git";
     glr = "git pull --rebase";
     gco = "git checkout";
