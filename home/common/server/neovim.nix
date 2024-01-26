@@ -3,13 +3,11 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   programs = lib.makeBinPath [
     pkgs.nodePackages.nodejs
   ];
-in
-{
+in {
   xdg.dataFile."dotvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/TwIStOy/dotvim.git";
