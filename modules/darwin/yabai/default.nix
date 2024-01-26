@@ -18,4 +18,11 @@ in {
     StandardErrorPath = "${homeDir}/Library/Logs/yabai.stderr.log";
     StandardOutPath = "${homeDir}/Library/Logs/yabai.stdout.log";
   };
+
+  launchd.daemons.yabai-sa = {
+    # https://github.com/koekeishiya/yabai/issues/1287
+    script = lib.mkForce ''
+      echo "skip it"
+    '';
+  };
 }
