@@ -13,7 +13,7 @@
       };
       git_branch = {
         symbol = " ";
-        ignore_branches = [ "master" "main" ];
+        ignore_branches = ["master" "main"];
       };
       git_metrics = {
         disabled = false;
