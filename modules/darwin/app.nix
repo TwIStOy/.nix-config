@@ -41,6 +41,7 @@
 
       "gnu-sed"
       "gnu-tar"
+      "jq"
     ];
 
     casks = [

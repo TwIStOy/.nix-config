@@ -5,7 +5,6 @@
 # ================================ 打开终端 ================================
 # 启动终端
 cmd - return : open -a kitty
-# 关闭当前窗口，这个不需要加，macOS 默认是 cmd + q，我 Linux 也这么设置的
 # ================================ 窗口设置 ================================
 # =============== 为了避免快捷键冲突改用了 ctrl 作为 modifier =================
 # https://github.com/koekeishiya/yabai/wiki/Commands
@@ -32,7 +31,7 @@ ctrl + alt + cmd - right : yabai -m window --resize right:50:0; yabai -m window 
 
 # ================================ 多桌面配置  ================================
 # 创建一个新桌面，并把当前活动的窗口发送到新桌面，并且自动跳转到新桌面. 需要 jq 支持 brew install jq
-shift + cmd - n : yabai -m space --create && env index=(yabai -m query --spaces --display | jq '.| length') yabai -m window --space "$index" && yabai -m space --focus "$index" && yabai -m space --layout bsp
+shift + cmd - n : yabai -m space --create && begin; set -lx INDEX (yabai -m query --spaces --display | jq '.| length'); yabai -m window --space "$INDEX" && yabai -m space --focus "$INDEX" && yabai -m space --layout bsp; end;
 
 # 在 stack 模式下通过方向键切换窗口
 ctrl - down : yabai -m window --focus stack.next || yabai -m window --focus south

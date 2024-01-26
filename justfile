@@ -11,6 +11,9 @@ yu:
 poi:
   sudo nixos-rebuild switch --flake .#poi --show-trace --verbose
 
+reload-skhd:
+  launchctl kickstart -k "gui/501/org.nixos.skhd"
+
 up:
   nix flake update
 
