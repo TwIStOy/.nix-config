@@ -64,14 +64,13 @@
   ];
 
   golang-tools = with pkgs; [
-    # golang
     go
     gotools
     gopls
   ];
 
   lua-tools = with pkgs; [
-    # lua
+    luajit
     stylua
     lua-language-server
   ];

@@ -11,11 +11,6 @@
         success_symbol = "[](bold green)";
         error_symbol = "[](bold red)";
       };
-      battery = {
-        full_symbol = "🔋 ";
-        charging_symbol = "⚡️ ";
-        discharging_symbol = "💀 ";
-      };
     };
   };
 }
