@@ -32,7 +32,7 @@ ctrl + alt + cmd - right : yabai -m window --resize right:50:0; yabai -m window 
 
 # ================================ 多桌面配置  ================================
 # 创建一个新桌面，并把当前活动的窗口发送到新桌面，并且自动跳转到新桌面. 需要 jq 支持 brew install jq
-shift + cmd - n : yabai -m space --create && index="$(yabai -m query --spaces --display | jq '.| length')" && yabai -m window --space "${index}" && yabai -m space --focus "${index}" && yabai -m space --layout bsp
+shift + cmd - n : yabai -m space --create && env index=(yabai -m query --spaces --display | jq '.| length') yabai -m window --space "$index" && yabai -m space --focus "$index" && yabai -m space --layout bsp
 
 # 在 stack 模式下通过方向键切换窗口
 ctrl - down : yabai -m window --focus stack.next || yabai -m window --focus south

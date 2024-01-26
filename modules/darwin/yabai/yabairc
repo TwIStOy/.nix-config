@@ -28,9 +28,9 @@ yabai -m config mouse_action1 move
 # ctrl + 鼠标右键 调整窗口大小
 yabai -m config mouse_action2 resize
 # 焦点跟随鼠标 默认off: 关闭  autoraise:自动提升 autofocus: 自动对焦
-yabai -m config focus_follows_mouse          autofocus
+yabai -m config focus_follows_mouse          off
 # 设置鼠标是否跟随当前活动窗口 默认 off: 关闭 on: 开启
-yabai -m config mouse_follows_focus          on
+yabai -m config mouse_follows_focus          off
 
 # 浮动窗口问题在顶部
 yabai -m config window_topmost               on
@@ -55,6 +55,8 @@ yabai -m rule --add app="^提醒事项$" manage=off
 yabai -m rule --add app="^关于本机$" manage=off
 # float system preferences
 yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Surge$" manage=off
 # show digital colour meter topmost and on all spaces
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
 
