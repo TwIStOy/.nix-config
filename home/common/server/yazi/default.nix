@@ -86,7 +86,7 @@ in {
   xdg.configFile = lib.attrsets.mergeAttrsList (
     (lib.lists.forEach yazi-plugins add-plugin)
     ++ [
-      {"yazi/init.lua" = builtins.readFile ./init.lua;}
+      {"yazi/init.lua".text = builtins.readFile ./init.lua;}
     ]
   );
 }
