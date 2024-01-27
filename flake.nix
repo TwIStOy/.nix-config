@@ -34,8 +34,7 @@
     nur-hawtian.url = "github:TwIStOy/nur-packages";
 
     secrets-hawtian = {
-      url = "git+ssh://git@github.com:TwIStOy/nix-secret.git?shallow=1";
-      rev = "b53ff92514b12e850ab3ed04b2b5726309b00bba";
+      url = "git+ssh://git@github.com/TwIStOy/nix-secret.git?shallow=1";
       flake = false;
     };
 
