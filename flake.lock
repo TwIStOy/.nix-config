@@ -515,7 +515,25 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur-hawtian": "nur-hawtian",
-        "pre-commit-hooks": "pre-commit-hooks"
+        "pre-commit-hooks": "pre-commit-hooks",
+        "secrets-hawtian": "secrets-hawtian"
+      }
+    },
+    "secrets-hawtian": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706358387,
+        "narHash": "sha256-6Cih9Gk0BDODdF2Q0NeRLKG6ROLLxqKIJQ9z9AFfhSg=",
+        "ref": "refs/heads/master",
+        "rev": "b53ff92514b12e850ab3ed04b2b5726309b00bba",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/TwIStOy/nix-secret.git"
+      },
+      "original": {
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/TwIStOy/nix-secret.git"
       }
     },
     "systems": {
