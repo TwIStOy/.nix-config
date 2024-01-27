@@ -1,8 +1,18 @@
 {
-  pkgs,
+  lib,
+  mylib,
   pkgs-unstable,
   ...
-}: {
+}: let
+  yazi-plugins = [
+    "smart-enter.yazi/init.lua"
+  ];
+
+  add-plugin = plugin: {
+    "yazi/plugins/${plugin}".text =
+      builtins.readFile "./plugins/${plugin}";
+  };
+in {
   programs.yazi = {
     enable = true;
     package = pkgs-unstable.yazi;
@@ -63,4 +73,7 @@
       };
     };
   };
+
+  # plugins
+  xdg.configFile = mylib.mergeAttrsList (lib.lists.foreach yazi-plugins add-plugin);
 }
