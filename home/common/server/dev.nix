@@ -1,16 +1,24 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  nur-hawtian,
+  ...
+}: let
   build-tools = with pkgs; [
     gcc
     gnumake
     ninja
   ];
 
-  cpp-tools = with pkgs; [
-    gcc
-    cmake
-    cmake-language-server
-    clang-tools
-  ];
+  cpp-tools =
+    (with pkgs; [
+      gcc
+      cmake
+      cmake-language-server
+      llvmPackages_17.clang-unwrapped
+    ])
+    ++ [
+      nur-hawtian.packages.${pkgs.system}.gersemi
+    ];
 
   nixpkgs-tools = with pkgs; [
     nil

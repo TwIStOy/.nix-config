@@ -444,6 +444,40 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1706173671,
+        "narHash": "sha256-lciR7kQUK2FCAYuszyd7zyRRmTaXVeoZsCyK6QFpGdk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4fddc9be4eaf195d631333908f2a454b03628ee5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nur-hawtian": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1706348065,
+        "narHash": "sha256-IdFAqlJ9yViDr++graXnk01E3IvHCQC9pD4J3w2/+n0=",
+        "owner": "TwIStOy",
+        "repo": "nur-packages",
+        "rev": "1ffddf92b6141ba8cf4f168936d0debe73f044ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TwIStOy",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -480,6 +514,7 @@
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nur-hawtian": "nur-hawtian",
         "pre-commit-hooks": "pre-commit-hooks"
       }
     },
