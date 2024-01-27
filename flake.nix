@@ -33,6 +33,11 @@
 
     nur-hawtian.url = "github:TwIStOy/nur-packages";
 
+    secrets-hawtian = {
+      url = "git+ssh://git@github.com:TwIStOy/nix-secret.git?shallow=1";
+      flake = false;
+    };
+
     # community wayland nixpkgs
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     # anyrun - a wayland launcher
