@@ -59,5 +59,6 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Surge$" manage=off
 # show digital colour meter topmost and on all spaces
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
+yabai -m rule --add app="^1Password$" sticky=on
 
 echo "yabai configuration loaded.."
