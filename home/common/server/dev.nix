@@ -7,6 +7,7 @@
     gcc
     gnumake
     ninja
+    pkg-config
   ];
 
   cpp-tools =
