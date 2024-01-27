@@ -1,6 +1,5 @@
 {
   lib,
-  mylib,
   pkgs-unstable,
   ...
 }: let
@@ -10,7 +9,7 @@
 
   add-plugin = plugin: {
     "yazi/plugins/${plugin}".text =
-      builtins.readFile "./plugins/${plugin}";
+      builtins.readFile ./plugins/${plugin};
   };
 in {
   programs.yazi = {
@@ -71,9 +70,23 @@ in {
           }
         ];
       };
+      manager = {
+        keymap = [
+          {
+            on = ["l"];
+            exec = "plugin --sync smart-enter";
+            desc = "Enter the child directory, or open the file";
+          }
+        ];
+      };
     };
   };
 
   # plugins
-  xdg.configFile = mylib.mergeAttrsList (lib.lists.foreach yazi-plugins add-plugin);
+  xdg.configFile = lib.attrsets.mergeAttrsList (
+    (lib.lists.forEach yazi-plugins add-plugin)
+    ++ [
+      {"yazi/init.lua" = builtins.readFile ./init.lua;}
+    ]
+  );
 }
