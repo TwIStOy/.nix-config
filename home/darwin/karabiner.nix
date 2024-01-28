@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   default_profile = {
     name = "Default profile";
     devices = [
@@ -21,21 +18,16 @@
     complex_modifications = {
       rules = [
         {
-          description = "CAPS_LOCK to ESCAPE or CTRL";
+          description = "CAPS_LOCK to CTRL";
           manipulators = [
             {
               type = "basic";
               from = {
                 key_code = "caps_lock";
               };
-              to_if_held_down = [
-                {
-                  key_code = "left_control";
-                }
-              ];
               to = [
                 {
-                  key_code = "escape";
+                  key_code = "left_control";
                 }
               ];
             }
