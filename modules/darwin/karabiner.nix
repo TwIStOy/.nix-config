@@ -1,3 +1,5 @@
 {...}: {
-  services.karabiner-elements.enable = false;
+  services.karabiner-elements = {
+    enable = true;
+  };
 }
