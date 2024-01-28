@@ -11,9 +11,13 @@
     ];
   };
 
-  nixpkgs.overlays = [
-    args.neovim-nightly-overlay.overlay
-  ];
+  nixpkgs.overlays =
+    (
+      import ../overlays { inherit inputs; }
+    )
+    ++ [
+      args.neovim-nightly-overlay.overlay
+    ];
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
