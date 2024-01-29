@@ -87,7 +87,7 @@
 
       devShells = forEachSystem (
         system:
-          import ./system/shell.nix {
+          import ./systems/shell.nix {
             inherit self inputs system;
           }
       );
