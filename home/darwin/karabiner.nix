@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{pkgs-unstable, pkgs, ...}: let
   default_profile = {
     name = "Default profile";
     devices = [
@@ -69,7 +69,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --layout bsp";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --layout bsp";
                 }
               ];
             }
@@ -90,7 +90,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --focus west";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --focus west";
                 }
               ];
             }
@@ -111,7 +111,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --focus south";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --focus south";
                 }
               ];
             }
@@ -132,7 +132,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --focus north";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --focus north";
                 }
               ];
             }
@@ -153,7 +153,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --focus east";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --focus east";
                 }
               ];
             }
@@ -175,7 +175,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --destroy";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --destroy";
                 }
               ];
             }
@@ -196,7 +196,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --focus 1";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --focus 1";
                 }
               ];
             }
@@ -217,7 +217,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --focus 2";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --focus 2";
                 }
               ];
             }
@@ -238,7 +238,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --focus 3";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --focus 3";
                 }
               ];
             }
@@ -259,7 +259,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --focus 4";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --focus 4";
                 }
               ];
             }
@@ -280,7 +280,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --focus 5";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --focus 5";
                 }
               ];
             }
@@ -301,7 +301,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --focus 6";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --focus 6";
                 }
               ];
             }
@@ -322,7 +322,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m space --focus recent";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m space --focus recent";
                 }
               ];
             }
@@ -344,7 +344,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --space 1";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --space 1";
                 }
               ];
             }
@@ -366,7 +366,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --space 2";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --space 2";
                 }
               ];
             }
@@ -388,7 +388,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --space 3";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --space 3";
                 }
               ];
             }
@@ -410,7 +410,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --space 4";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --space 4";
                 }
               ];
             }
@@ -432,7 +432,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --space 5";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --space 5";
                 }
               ];
             }
@@ -454,7 +454,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --space 6";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --space 6";
                 }
               ];
             }
@@ -476,7 +476,7 @@
               };
               to = [
                 {
-                  shell_command = "${pkgs.yabai}/bin/yabai -m window --space next";
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --space next";
                 }
               ];
             }
@@ -499,7 +499,7 @@
               to = [
                 {
                   shell_command = ''
-                    ${pkgs.yabai}/bin/yabai -m space --create && index="$(${pkgs.yabai}/bin/yabai -m query --spaces --display | ${pkgs.jq}/bin/jq '.| length')" && ${pkgs.yabai}/bin/yabai -m window --space "''${index}" && ${pkgs.yabai}/bin/yabai -m space --focus "''${index}" && ${pkgs.yabai}/bin/yabai -m space --layout bsp
+                    ${pkgs-unstable.yabai}/bin/yabai -m space --create && index="$(${pkgs-unstable.yabai}/bin/yabai -m query --spaces --display | ${pkgs.jq}/bin/jq '.| length')" && ${pkgs-unstable.yabai}/bin/yabai -m window --space "''${index}" && ${pkgs-unstable.yabai}/bin/yabai -m space --focus "''${index}" && ${pkgs-unstable.yabai}/bin/yabai -m space --layout bsp
                   '';
                 }
               ];

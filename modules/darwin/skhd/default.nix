@@ -16,7 +16,7 @@
     # https://github.com/LnL7/nix-darwin/issues/406
     path = [
       "${pkgs.skhd}/bin"
-      "${pkgs.yabai}/bin"
+      # "${pkgs.yabai}/bin"
       "${pkgs.jq}/bin"
     ];
     serviceConfig = {

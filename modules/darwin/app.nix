@@ -52,6 +52,7 @@
       "visual-studio-code"
       "telegram"
       "discord"
+      "karabiner-elements"
     ];
   };
 }
