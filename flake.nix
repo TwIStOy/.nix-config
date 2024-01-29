@@ -84,6 +84,13 @@
           };
         }
       );
+
+      devShells = forEachSystem (
+        system:
+          import ./system/shell.nix {
+            inherit self inputs system;
+          }
+      );
     };
 
   nixConfig = {
