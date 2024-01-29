@@ -13,7 +13,6 @@
       italic_font = "MonoLisa Light Italic";
       bold_italic_font = "MonoLisa SemiBold Italic";
 
-      font_size = 18;
       disable_ligatures = "never";
       share_connections = "yes";
       scrollback_lines = "10000";
@@ -51,6 +50,7 @@
 
       kitty_mod = "cmd";
       clear_all_shortcuts = "yes";
+      shell = "/run/current-system/sw/bin/fish --login";
 
       clipboard_control = "write-clipboard write-primary read-clipboard read-primary";
     };
