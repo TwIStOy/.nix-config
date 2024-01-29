@@ -499,7 +499,7 @@
               to = [
                 {
                   shell_command = ''
-                    ${pkgs.yabai}/bin/yabai -m space --create && begin; set -lx INDEX (${pkgs.yabai}/bin/yabai -m query --spaces --display | ${pkgs.jq}/bin/jq '.| length'); ${pkgs.yabai}/bin/yabai -m window --space "$INDEX" && ${pkgs.yabai}/bin/yabai -m space --focus "$INDEX" && ${pkgs.yabai}/bin/yabai -m space --layout bsp; end;
+                    ${pkgs.yabai}/bin/yabai -m space --create && index="$(${pkgs.yabai}/bin/yabai -m query --spaces --display | ${pkgs.jq}/bin/jq '.| length')" && ${pkgs.yabai}/bin/yabai -m window --space "''${index}" && ${pkgs.yabai}/bin/yabai -m space --focus "''${index}" && ${pkgs.yabai}/bin/yabai -m space --layout bsp
                   '';
                 }
               ];
