@@ -13,6 +13,7 @@ in {
     python3.pkgs.pynvim
     nodePackages.neovim
     vimPlugins.telescope-fzf-native-nvim
+    tree-sitter
   ];
 
   xdg.configFile."nvim/init.lua" = {
