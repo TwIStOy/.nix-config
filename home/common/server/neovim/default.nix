@@ -21,6 +21,7 @@ in {
 
       local dotpath = "${config.home.homeDirectory}/.local/share/dotvim"
       vim.api.nvim_command("set runtimepath+=" .. dotpath)
+      local nix_plugins = "${pkgs.vimPlugins.telescope-fzf-native-nvim}" 
 
       require("ht.init")
     '';
