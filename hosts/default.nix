@@ -1,5 +1,6 @@
 {
   inputs,
+  nixpkgs,
   nix-darwin,
   nixpkgs-darwin,
   home-manager,
@@ -35,5 +36,14 @@
     inherit inputs;
     inherit ht-fn;
   };
+  nixos-hosts = import ./nixos {
+    inherit nixpkgs;
+    inherit home-manager;
+    inherit flake-utils;
+    inherit buildExtraSpecialArgs;
+    inherit inputs;
+    inherit ht-fn;
+  };
 in
   darwin-hosts
+  // nixos-hosts
