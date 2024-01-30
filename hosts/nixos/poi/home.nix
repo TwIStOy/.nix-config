@@ -3,7 +3,8 @@
   programs.ssh = {
     extraConfig = ''
     Host github.com
-        ProxyCommand nc -X connect -x 192.168.50.217:8889 %h %p
+        HostName %h
+        ProxyCommand nc -X 5 -x 192.168.50.217:8889 %h %p
     '';
   };
 }
