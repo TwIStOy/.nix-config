@@ -7,7 +7,7 @@
   home-modules, # modules for home-manager
   ...
 }: let
-  constants = import ../constants.nix;
+  inherit (specialArgs) username;
 in
   nix-darwin.lib.darwinSystem {
     inherit system;
@@ -22,7 +22,7 @@ in
           home-manager.useUserPackages = true;
 
           home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${constants.username}" = home-modules;
+          home-manager.users."${username}" = home-modules;
         }
       ];
   }

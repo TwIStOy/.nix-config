@@ -14,4 +14,5 @@
         )
         (builtins.readDir path)));
   darwinSystem = import ./darwinSystem.nix;
+  nixosSystem = import ./nixosSystem.nix;
 }
