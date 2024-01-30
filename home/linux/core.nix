@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     iotop
     iftop
-    btop
 
     tcpdump
   ];
