@@ -1,6 +1,6 @@
-{mylib, ...}: {
+{ht-fn, ...}: {
   imports =
-    (mylib.scanPaths ./.)
+    (ht-fn.listDirectory ./.)
     ++ [
       ../common.nix
     ];

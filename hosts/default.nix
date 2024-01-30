@@ -7,9 +7,11 @@
   ...
 }: let
   constants = import ../helpers/constants.nix;
+  ht-fn = import ../helpers/fn {nixpkgs = inputs.nixpkgs;};
   buildExtraSpecialArgs = system:
     {
       inherit constants;
+      inherit ht-fn;
       pkgs-darwin = import inputs.nixpkgs-darwin {
         inherit system;
         config.allowUnfree = true;
@@ -31,6 +33,7 @@
     inherit flake-utils;
     inherit buildExtraSpecialArgs;
     inherit inputs;
+    inherit ht-fn;
   };
 in
   darwin-hosts

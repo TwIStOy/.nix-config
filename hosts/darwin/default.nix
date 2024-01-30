@@ -5,15 +5,15 @@
   flake-utils,
   buildExtraSpecialArgs,
   inputs,
+  ht-fn,
   ...
 }: let
-  darwinSystem = import ../../helpers/fn/darwinSystem.nix;
   yamato_modules = import ./yamato;
   buildSystem = {
     host-modules,
     system,
   }:
-    darwinSystem (
+    ht-fn.darwinSystem (
       inputs.nixpkgs.lib.attrsets.mergeAttrsList [
         {
           inherit nix-darwin home-manager inputs;

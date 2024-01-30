@@ -5,6 +5,7 @@
 }: let
   inherit (inputs.nixpkgs) lib;
   mylib = import ../lib {inherit lib;};
+  ht-fn = import ../helpers/fn {nixpkgs = inputs.nixpkgs;};
   vars = import ./vars.nix;
 
   specialArgsForSystem = system:
@@ -38,7 +39,7 @@
     constants
     vars
     {
-      inherit self lib mylib allSystemSpecialArgs;
+      inherit self lib mylib ht-fn allSystemSpecialArgs;
     }
   ];
 in
