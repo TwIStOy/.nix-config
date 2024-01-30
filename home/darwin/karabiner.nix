@@ -1,4 +1,8 @@
-{pkgs-unstable, pkgs, ...}: let
+{
+  pkgs-unstable,
+  pkgs,
+  ...
+}: let
   default_profile = {
     name = "Default profile";
     devices = [
