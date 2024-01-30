@@ -9,7 +9,8 @@
   inherit (specialArgs) username;
 in
   nixpkgs.lib.nixosSystem {
-    inherit system specialArgs;
+    inherit system;
+    inherit specialArgs;
     modules =
       nixos-modules
       ++ [

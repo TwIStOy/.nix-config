@@ -54,46 +54,40 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    flake-utils,
     pre-commit-hooks,
     ...
   }: let
-    constants = import ./constant.nix;
-
-    forEachSystem = func: (nixpkgs.lib.genAttrs constants.allSystems func);
-    allSystemConfigurations = import ./systems {
-      inherit self inputs constants;
-    };
-
     configurations = import ./hosts ({
         inherit inputs;
       }
       // inputs);
+
+    formatter = flake-utils.lib.eachDefaultSystem (system: {
+      formatter = nixpkgs.legacyPackages.${system}.alejandra;
+    });
+
+    checks = flake-utils.lib.eachDefaultSystem (system: {
+      pre-commit-check = pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+        };
+      };
+    });
+
+    shells = flake-utils.lib.eachDefaultSystem (system: {
+      devShell = import ./shells {
+        inherit self inputs system;
+      };
+    });
   in
-    configurations
-    # allSystemConfigurations
-    // {
-      formatter = forEachSystem (
-        system: nixpkgs.legacyPackages.${system}.alejandra
-      );
-
-      checks = forEachSystem (
-        system: {
-          pre-commit-check = pre-commit-hooks.lib.${system}.run {
-            src = ./.;
-            hooks = {
-              alejandra.enable = true;
-            };
-          };
-        }
-      );
-
-      devShells = forEachSystem (
-        system:
-          import ./systems/shell.nix {
-            inherit self inputs system;
-          }
-      );
-    };
+    nixpkgs.lib.attrsets.mergeAttrsList [
+      configurations
+      formatter
+      checks
+      shells
+    ];
 
   nixConfig = {
     # substituers will be appended to the default substituters when fetching packages
