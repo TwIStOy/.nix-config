@@ -83,6 +83,8 @@
   others = with pkgs; [
     # Others
     taplo # TOML language server / formatter / validator
+
+    protobuf
   ];
 in {
   home.packages =

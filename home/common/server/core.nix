@@ -20,6 +20,7 @@
     hyperfine
     fd
     skim
+    btop
 
     curl
     wget
