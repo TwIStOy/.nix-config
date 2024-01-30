@@ -4,7 +4,8 @@
   system,
   specialArgs,
   nixos-modules,
-  home-module,
+  home-modules,
+  ...
 }: let
   inherit (specialArgs) username;
 in
@@ -20,7 +21,7 @@ in
           home-manager.useUserPackages = true;
 
           home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${username}" = home-module;
+          home-manager.users."${username}" = home-modules;
         }
       ];
   }

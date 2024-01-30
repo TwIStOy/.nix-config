@@ -8,7 +8,7 @@
   ...
 }: let
   buildSystem = {
-    home-modules,
+    host-modules,
     system,
   }:
     ht-fn.nixosSystem (
@@ -17,7 +17,7 @@
           inherit home-manager inputs ht-fn;
           inherit nixpkgs;
         }
-        home-modules
+        host-modules
         {
           inherit system;
           specialArgs = buildExtraSpecialArgs system;
@@ -28,6 +28,7 @@ in {
   nixosConfigurations = {
     poi = buildSystem {
       system = flake-utils.lib.system.x86_64-linux;
+      host-modules = import ./poi;
     };
   };
 }
