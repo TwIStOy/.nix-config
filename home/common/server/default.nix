@@ -1,3 +1,3 @@
-{mylib, ...}: {
-  imports = mylib.scanPaths ./.;
+{ht-fn, ...}: {
+  imports = ht-fn.listDirectory ./.;
 }

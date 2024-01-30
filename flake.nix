@@ -63,8 +63,14 @@
     allSystemConfigurations = import ./systems {
       inherit self inputs constants;
     };
+
+    configurations = import ./hosts ({
+        inherit inputs;
+      }
+      // inputs);
   in
-    allSystemConfigurations
+    configurations
+    # allSystemConfigurations
     // {
       formatter = forEachSystem (
         system: nixpkgs.legacyPackages.${system}.alejandra
@@ -87,11 +93,6 @@
             inherit self inputs system;
           }
       );
-
-      test-xxx = import ./hosts ({
-          inherit inputs;
-        }
-        // inputs);
     };
 
   nixConfig = {

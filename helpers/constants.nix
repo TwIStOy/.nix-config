@@ -1,9 +1,7 @@
 {
-  user = {
-    username = "hawtian";
-    fullname = "Hawtian Wang";
-    email = "twistoy.wang@gmail.com";
-  };
+  username = "hawtian";
+  userfullname = "Hawtian Wang";
+  useremail = "twistoy.wang@gmail.com";
 
   availableSystems = {
     x64 = "x86-64-linux";

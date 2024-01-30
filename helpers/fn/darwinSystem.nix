@@ -22,7 +22,7 @@ in
           home-manager.useUserPackages = true;
 
           home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${constants.user.username}" = home-modules;
+          home-manager.users."${constants.username}" = home-modules;
         }
       ];
   }

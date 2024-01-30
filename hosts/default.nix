@@ -10,7 +10,7 @@
   ht-fn = import ../helpers/fn {nixpkgs = inputs.nixpkgs;};
   buildExtraSpecialArgs = system:
     {
-      inherit constants;
+      inherit (constants) username userfullname useremail;
       inherit ht-fn;
       pkgs-darwin = import inputs.nixpkgs-darwin {
         inherit system;
