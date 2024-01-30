@@ -21,7 +21,9 @@ in {
 
       local dotpath = "${config.home.homeDirectory}/.local/share/dotvim"
       vim.api.nvim_command("set runtimepath+=" .. dotpath)
-      local nix_plugins = "${pkgs.vimPlugins.telescope-fzf-native-nvim}" 
+      _G["nix_plugins"] = {
+        ["telescope-fzf-native-nvim"] = "${pkgs.vimPlugins.telescope-fzf-native-nvim}"
+      }
 
       require("ht.init")
     '';
@@ -30,7 +32,7 @@ in {
   xdg.dataFile."dotvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/TwIStOy/dotvim.git";
-      rev = "38eff15c2859cfeb0c8ed22f188f627461ed71e8";
+      rev = "53042ff1c7ade5d21bccb2b2b8be999b3f71c62e";
     };
     recursive = true;
     onChange = "${pkgs.writeShellScript "dotvim-post-install" ''
