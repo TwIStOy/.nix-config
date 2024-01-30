@@ -23,4 +23,7 @@
       ];
     }
   ];
+  programs.ssh = {
+    startAgent = true;
+  };
 }
