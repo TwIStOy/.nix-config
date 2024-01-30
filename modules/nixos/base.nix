@@ -1,29 +1,26 @@
-{
-  username,
-  userfullname,
-  ...
-}: {
-  users.users."${username}" = {
-    home = "/home/${username}";
-    description = "${userfullname}";
-    isNormalUser = true;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-  };
-  security.sudo.extraRules = [
-    {
-      users = ["${username}"];
-      commands = [
-        {
-          command = "ALL";
-          options = ["NOPASSWD"];
-        }
-      ];
-    }
-  ];
+{pkgs, ...}: {
   programs.ssh = {
     startAgent = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    wget
+    curl
+    aria2
+
+    # create a fhs environment by command `fhs`, so we can run non-nixos packages in nixos!
+    (
+      let
+        base = pkgs.appimageTools.defaultFhsEnvArgs;
+      in
+        pkgs.buildFHSUserEnv (base
+          // {
+            name = "fhs";
+            targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+            profile = "export FHS=1";
+            runScript = "bash";
+            extraOutputsToInstall = ["dev"];
+          })
+    )
+  ];
 }

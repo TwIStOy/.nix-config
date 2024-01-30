@@ -1,7 +1,3 @@
-_: {
-  imports = [
-    ./base.nix
-    ./networking.nix
-    ./i18n.nix
-  ];
+{ht-fn, ...}: {
+  imports = ht-fn.listDirectory ./.;
 }
