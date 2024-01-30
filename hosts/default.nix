@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   nix-darwin,
   nixpkgs-darwin,
   home-manager,
@@ -26,7 +25,6 @@
     }
     // inputs;
   darwin-hosts = import ./darwin {
-    inherit pkgs;
     inherit nix-darwin;
     inherit nixpkgs-darwin;
     inherit home-manager;

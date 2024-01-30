@@ -1,5 +1,4 @@
 {
-  pkgs,
   nix-darwin,
   nixpkgs-darwin,
   home-manager,
@@ -15,7 +14,7 @@
     system,
   }:
     darwinSystem (
-      pkgs.lib.attrsets.mergeAttrsList [
+      inputs.nixpkgs.lib.attrsets.mergeAttrsList [
         {
           inherit nix-darwin home-manager inputs;
           nixpkgs = nixpkgs-darwin;

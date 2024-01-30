@@ -87,6 +87,11 @@
             inherit self inputs system;
           }
       );
+
+      test-xxx = import ./hosts ({
+          inherit inputs;
+        }
+        // inputs);
     };
 
   nixConfig = {
