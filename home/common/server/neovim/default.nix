@@ -9,7 +9,6 @@
   ];
 in {
   home.packages = with pkgs; [
-    neovim-nightly
     python3.pkgs.pynvim
     nodePackages.neovim
   ];
@@ -23,6 +22,20 @@ in {
 
       require("ht.init")
     '';
+  };
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+
+    plugins = with pkgs.vimPlugins; [
+      # search all the plugins using https://search.nixos.org/packages
+      telescope-fzf-native-nvim
+    ];
   };
 
   xdg.dataFile."dotvim" = {
