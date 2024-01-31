@@ -10,13 +10,15 @@
         forwardX11 = true;
         remoteForwards = [
           {
+            bind.address = "LOCALHOST";
             bind.port = 2224;
-            host.address = "127.0.0.1";
+            host.address = "localhost";
             host.port = 2224;
           }
           {
+            bind.address = "LOCALHOST";
             bind.port = 2225;
-            host.address = "127.0.0.1";
+            host.address = "localhost";
             host.port = 2225;
           }
         ];
