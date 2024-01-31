@@ -77,7 +77,7 @@
     });
 
     shells = flake-utils.lib.eachDefaultSystem (system: {
-      devShell = import ./shells {
+      devShells = import ./shells {
         inherit self inputs system;
       };
     });
