@@ -1,6 +1,11 @@
 {...}: {
   programs.ssh = {
     enable = true;
+    forwardAgent = true;
+    controlMaster = "auto";
+    controlPersist = "1440m";
+    serverAliveInterval = 30;
+    serverAliveCountMax = 60;
     extraConfig = ''
       Include ~/.orbstack/ssh/config
 
