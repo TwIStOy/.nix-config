@@ -21,6 +21,16 @@
           TCPKeepAlive yes
           ServerAliveInterval 30
           IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+      Host poi.remote
+          Hostname frp2.twistoy.cn
+          Port 4001
+          user hawtian
+          IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+          ForwardAgent yes
+          KeepAlive yes
+          TCPKeepAlive yes
+          ServerAliveInterval 30
+          ForwardX11 yes
     '';
   };
 }

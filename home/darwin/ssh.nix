@@ -25,7 +25,7 @@
           ServerAliveInterval 30
           ServerAliveCountMax 60
 
-        Host dev
+        Host dev.remote
           HostName frp2.twistoy.cn
           Port 4000
           User hawtian

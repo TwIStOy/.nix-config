@@ -21,6 +21,7 @@
     fd
     skim
     btop
+    tokei
 
     curl
     wget
