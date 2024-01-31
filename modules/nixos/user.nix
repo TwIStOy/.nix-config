@@ -1,6 +1,7 @@
 {
   username,
   userfullname,
+  ...
 }: {
   users.mutableUsers = false;
 
