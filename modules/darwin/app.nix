@@ -53,6 +53,7 @@
       "telegram"
       "discord"
       "karabiner-elements"
+      "jetbrains-toolbox"
     ];
   };
 }

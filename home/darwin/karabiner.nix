@@ -30,6 +30,18 @@
         };
         mouse_flip_vertical_wheel = true;
       }
+      {
+        ignore = false;
+        identifiers = {
+          is_game_pad = false;
+          is_keyboard = false;
+          is_pointing_device = true;
+          # Logi M650 L
+          product_id = 45108;
+          vendor_id = 1133;
+        };
+        mouse_flip_vertical_wheel = true;
+      }
     ];
     complex_modifications = {
       rules = [
