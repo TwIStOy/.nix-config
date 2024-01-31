@@ -32,17 +32,6 @@
           KeepAlive = "yes";
         };
       };
-      "poi.remote" = {
-        hostname = "frp2.twistoy.cn";
-        port = 4001;
-        user = "hawtian";
-        forwardAgent = true;
-        forwardX11 = true;
-        extraOptions = {
-          KeepAlive = "yes";
-          TCPKeepAlive = "yes";
-        };
-      };
     };
   };
 }
