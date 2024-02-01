@@ -18,6 +18,7 @@ in
       abseil-cpp
       range-v3
       glibc
+      boost
     ];
 
     LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath packages;
@@ -27,7 +28,7 @@ in
     AGORA_PLATFORM = "${pkgs.stdenv.hostPlatform.config}";
 
     shellHook = ''
-      echo "Agora-dev ${pkgs.abseil-cpp} ${pkgs.range-v3} ${pkgs.glibc.dev}"
+      echo "Agora-dev ${pkgs.abseil-cpp} ${pkgs.range-v3} ${pkgs.glibc.dev} ${pkgs.boost.dev}"
       exec fish
     '';
   }
