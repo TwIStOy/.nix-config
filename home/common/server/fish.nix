@@ -24,5 +24,8 @@
     gaa = "git add --all";
     gcm = "git commit -m";
     gp = "git push";
+    nvi = "nvim";
+    v = "nvim";
+    j = "just";
   };
 }
