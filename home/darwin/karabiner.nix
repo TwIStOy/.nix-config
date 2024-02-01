@@ -62,7 +62,7 @@
           ];
         }
         {
-          description = "CMD+ENTER: open kitty";
+          description = "CMD+ALT+ENTER: open kitty";
           manipulators = [
             {
               type = "basic";
@@ -71,6 +71,7 @@
                 modifiers = {
                   mandatory = [
                     "left_command"
+                    "left_option"
                   ];
                 };
               };
