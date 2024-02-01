@@ -25,6 +25,8 @@
 
     curl
     wget
+    dig
+    expect
 
     gnugrep
     gnused

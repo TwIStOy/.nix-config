@@ -7,6 +7,8 @@
       X11Forwarding = true;
       PermitRootLogin = "yes";
       PasswordAuthentication = true;
+      ClientAliveInterval = 60;
+      ClientAliveCountMax = 30;
     };
   };
 }
