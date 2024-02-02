@@ -4,9 +4,7 @@ in {
   programs.ssh = {
     enable = true;
     forwardAgent = true;
-    controlMaster = "auto";
-    controlPersist = "1440m";
-    serverAliveInterval = 30;
+    serverAliveInterval = 10;
     serverAliveCountMax = 60;
     extraOptionOverrides = {
       IdentityAgent = one-password-agent;
@@ -42,6 +40,8 @@ in {
           ControlPath = "~/.ssh/braum-%r@%h:%p";
           PubkeyAcceptedAlgorithms = "+ssh-rsa";
           HostkeyAlgorithms = "+ssh-rsa";
+          ControlMaster = "auto";
+          ControlPersist = "yes";
         };
       };
     };

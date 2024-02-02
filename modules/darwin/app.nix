@@ -54,6 +54,7 @@
       "discord"
       "karabiner-elements"
       "jetbrains-toolbox"
+      "tailscale"
     ];
   };
 }
