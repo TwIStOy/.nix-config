@@ -7,8 +7,13 @@
 
   frp-secrets = builtins.fromJSON (builtins.readFile "${secrets-hawtian}/frp-secret.json");
 in {
+  disabledModules = [
+    "services/networking/frp.nix"
+  ];
+
   imports = [
     ./hardware-configuration.nix
+    "${pkgs-unstable.path}/nixos/modules/services/networking/frp.nix"
   ];
 
   # Bootloader.
