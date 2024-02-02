@@ -1,7 +1,11 @@
-{secrets-hawtian, ...}: let
+{
+  secrets-hawtian,
+  pkgs-unstable,
+  ...
+}: let
   hostname = "poi";
 
-  frp-secrets = builtins.fromJSON (builtins.readFile "${secrets-hawtian}./frp-secrets.json");
+  frp-secrets = builtins.fromJSON (builtins.readFile "${secrets-hawtian}/frp-secret.json");
 in {
   imports = [
     ./hardware-configuration.nix
@@ -23,6 +27,7 @@ in {
 
   services.frp = {
     enable = true;
+    package = pkgs-unstable.frp;
     role = "client";
     settings = {
       inherit (frp-secrets) serverAddr serverPort auth;
