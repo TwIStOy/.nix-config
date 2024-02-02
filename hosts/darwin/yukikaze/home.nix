@@ -10,7 +10,6 @@
         forwardX11 = true;
         extraOptions = {
           KeepAlive = "yes";
-          TCPKeepAlive = "yes";
         };
       };
     };

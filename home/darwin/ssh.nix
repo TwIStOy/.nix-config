@@ -8,7 +8,6 @@ in {
     serverAliveCountMax = 60;
     extraOptionOverrides = {
       IdentityAgent = one-password-agent;
-      TcpKeepAlive = "yes";
     };
     includes = [
       "~/.orbstack/ssh/config"
@@ -29,7 +28,6 @@ in {
         forwardX11 = true;
         extraOptions = {
           KeepAlive = "yes";
-          TCPKeepAlive = "yes";
         };
       };
       "agora-jump" = {
