@@ -19,5 +19,10 @@ in {
     xkbVariant = "";
   };
 
+  services.frp = {
+    enable = true;
+    role = "client";
+  };
+
   system.stateVersion = "23.11";
 }
