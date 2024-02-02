@@ -44,13 +44,6 @@ in {
           localPort = 22;
           remotePort = 4000;
         }
-        {
-          name = "poi-ssh-p2p";
-          type = "xtcp";
-          secretKey = "hawtian";
-          localIP = "127.0.0.1";
-          localPort = 22;
-        }
       ];
     };
   };
