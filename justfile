@@ -17,10 +17,12 @@ reload-skhd:
 up:
   nix flake update
 
-push:
+push: commit
+  git push
+
+commit:
   git add --all
   git commit -m '...'
-  git push
 
 gc:
   # garbage collect all unused nix store entries
