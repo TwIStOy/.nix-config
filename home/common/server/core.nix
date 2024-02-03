@@ -40,25 +40,4 @@
   ];
 
   programs.nix-index.enable = true;
-
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "Nord";
-    };
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
-  };
-
-  programs.atuin = {
-    enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
-  };
 }
