@@ -21,6 +21,7 @@
     skim
     btop
     tokei
+    ydict
 
     curl
     wget
