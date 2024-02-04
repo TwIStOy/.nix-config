@@ -22,7 +22,7 @@ in {
       };
       "poi.remote" = {
         hostname = "frp2.twistoy.cn";
-        port = 4001;
+        port = 4002;
         user = "hawtian";
         forwardAgent = true;
         forwardX11 = true;
