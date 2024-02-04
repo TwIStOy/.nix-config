@@ -80,12 +80,16 @@
     lua-language-server
   ];
 
-  others = with pkgs; [
-    # Others
-    taplo # TOML language server / formatter / validator
+  others = with pkgs;
+    [
+      # Others
+      taplo # TOML language server / formatter / validator
 
-    protobuf
-  ];
+      protobuf
+    ]
+    ++ [
+      nur-hawtian.packages.${pkgs.system}.rime-ls
+    ];
 in {
   home.packages =
     build-tools
