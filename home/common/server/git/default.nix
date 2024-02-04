@@ -20,5 +20,9 @@
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG92SyvgOOe9pGPGHEY9VbDBWwqaRgm9tg1RJUxlfdCN";
       signByDefault = true;
     };
+
+    extraConfig = {
+      gpg.format = "ssh";
+    };
   };
 }
