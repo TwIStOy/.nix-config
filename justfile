@@ -10,7 +10,7 @@ yu:
 
 poi:
   nom build .#nixosConfigurations.poi.config.system.build.toplevel --show-trace --verbose
-  sudo nixos-rebuild switch --flake .#poi --show-trace
+  sudo nixos-rebuild switch --flake .#poi
 
 up:
   nix flake update

@@ -13,6 +13,7 @@
     {
       inherit (constants) username userfullname useremail;
       inherit ht-fn;
+      inherit system;
       pkgs-darwin = import inputs.nixpkgs-darwin {
         inherit system;
         config.allowUnfree = true;
