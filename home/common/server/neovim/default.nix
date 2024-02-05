@@ -30,6 +30,20 @@ in {
     '';
   };
 
+  xdg.configFile."nvim/init-user.lua" = {
+    text = ''
+      vim.loader.enable()
+
+      local dotpath = vim.fn.expand("$HOME") .. "/.dotvim"
+      vim.api.nvim_command("set runtimepath+=" .. dotpath)
+      _G["nix_plugins"] = {
+        ["telescope-fzf-native-nvim"] = "${pkgs.vimPlugins.telescope-fzf-native-nvim}"
+      }
+
+      require("ht.init")
+    '';
+  };
+
   xdg.dataFile."dotvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/TwIStOy/dotvim.git";
