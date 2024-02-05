@@ -1,0 +1,23 @@
+patch:
+  # number of candidates
+  menu:
+    page_size: 9
+
+  switcher:
+    caption: "输入方案"
+    hotkeys:
+      - "Control+grave"
+
+  schema_list:
+    - { schema: myfly }
+
+  # disable in terminal apps
+  app_options:
+    com.googlecode.iterm2:
+      ascii_mode: true
+      no_inline: true
+    net.kovidgoyal.kitty:
+      ascii_mode: true
+      no_inline: true
+
+

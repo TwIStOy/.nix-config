@@ -1,0 +1,89 @@
+# Rime schema settings
+# encoding: utf-8
+#
+
+schema:
+  schema_id: myfly
+  name: MyFly
+  version: "1.0.0"
+  author: twistoy.wang@gmail.com
+  description: MyFly
+
+punctuator:
+  import_preset: default
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator
+    - lua_translator@date_translator
+    - lua_translator@time_translator
+    - history_translator@history
+    - reverse_lookup_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: '/;zyxwvutsrqponmlkjihgfedcba'
+  initials: 'abcdefghijklmnopqrstuvwxyz;'
+  finals: '/'
+  max_code_length: 4
+  auto_select: true
+  auto_select_pattern: ^;.$|^\w{4}$
+  auto_clear: max_length
+
+
+translator:
+  dictionary: flypy
+  enable_charset_filter: false
+  enable_sentence: false
+  enable_completion: true
+  enable_user_dict: false
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+
+key_binder:
+  import_preset: default
+  bindings:
+    - accept: bracketleft
+      send: Page_Up
+      when: paging
+    - accept: bracketright
+      send: Page_Down
+      when: has_menu
+    - accept: comma
+      send: Page_Up
+      when: paging
+    - accept: period
+      send: Page_Down
+      when: has_menu
+    - accept: semicolon
+      send: 2
+      when: has_menu
+    - accept: Control+period
+      toggle: ascii_punct
+      when: always
+
+history:
+  input: ;f
+  size: 1
+  initial_quality: 1
+
+
+

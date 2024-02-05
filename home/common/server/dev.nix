@@ -27,6 +27,7 @@
     statix
     deadnix
     alejandra
+    nom
 
     nixpkgs-fmt
     nixpkgs-lint
@@ -80,16 +81,12 @@
     lua-language-server
   ];
 
-  others = with pkgs;
-    [
-      # Others
-      taplo # TOML language server / formatter / validator
+  others = with pkgs; [
+    # Others
+    taplo # TOML language server / formatter / validator
 
-      protobuf
-    ]
-    ++ [
-      nur-hawtian.packages.${pkgs.system}.rime-ls
-    ];
+    protobuf
+  ];
 in {
   home.packages =
     build-tools
