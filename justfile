@@ -9,10 +9,7 @@ yu:
   ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze --show-trace
 
 poi:
-  sudo nixos-rebuild switch --flake .#poi --show-trace --verbose
-
-reload-skhd:
-  launchctl kickstart -k "gui/501/org.nixos.skhd"
+  sudo nixos-rebuild switch --flake .#poi
 
 up:
   nix flake update
