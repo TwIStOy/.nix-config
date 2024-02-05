@@ -37,6 +37,7 @@
     lazygit
     xclip
     tmux
+    fswatch
   ];
 
   programs.nix-index.enable = true;
