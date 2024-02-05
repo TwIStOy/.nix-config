@@ -30,7 +30,7 @@ nvim-clean:
   rm $HOME/.config/nvim/init.lua
 
 nvim-test: nvim-clean
-  cp home/common/server/neovim/init.lua $HOME/.config/nvim/init.lua
+  ln -s $HOME/.config/nvim/init-user.lua $HOME/.config/nvim/init.lua
 
 fmt:
   nix fmt
