@@ -9,7 +9,7 @@ yu:
   ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze --show-trace
 
 poi:
-  nom build .#nixosConfigurations.poi.config.system.build.toplevel
+  nom build .#nixosConfigurations.poi.config.system.build.toplevel --show-trace --verbose
   sudo nixos-rebuild switch --flake .#poi --show-trace
 
 up:

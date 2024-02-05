@@ -27,7 +27,7 @@
     statix
     deadnix
     alejandra
-    nom
+    nix-output-monitor
 
     nixpkgs-fmt
     nixpkgs-lint
