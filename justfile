@@ -8,7 +8,7 @@ yu:
     --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze --show-trace
 
-poi:
+poi: nvim-clean
   nom build .#nixosConfigurations.poi.config.system.build.toplevel --show-trace --verbose
   sudo nixos-rebuild switch --flake .#poi
 
@@ -28,7 +28,7 @@ gc:
   sudo nix-collect-garbage --delete-old
 
 nvim-clean:
-  rm $HOME/.config/nvim/init.lua
+  -rm $HOME/.config/nvim/init.lua
 
 nvim-test: nvim-clean
   ln -s $HOME/.config/nvim/init-user.lua $HOME/.config/nvim/init.lua
