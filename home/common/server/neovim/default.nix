@@ -9,12 +9,18 @@
   ];
 in {
   home.packages = with pkgs; [
-    neovim-nightly
     python3.pkgs.pynvim
     nodePackages.neovim
-    vimPlugins.telescope-fzf-native-nvim
     tree-sitter
   ];
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    plugins = with pkgs; [
+      vimPlugins.telescope-fzf-native-nvim
+    ];
+  };
 
   xdg.configFile."nvim/init.lua" = {
     text = ''
