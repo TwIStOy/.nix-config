@@ -1,11 +1,9 @@
 ya:
-  nix build .#darwinConfigurations.yamato.system \
-    --extra-experimental-features 'nix-command flakes'
+  nix build .#darwinConfigurations.yamato.system --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yamato
 
 yu:
-  nom build .#darwinConfigurations.yukikaze.system \
-    --extra-experimental-features 'nix-command flakes'
+  nom build .#darwinConfigurations.yukikaze.system --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze --show-trace
 
 poi:
@@ -19,19 +17,21 @@ push: commit
   git push
 
 commit:
-  -git add --all
-  -git commit -m '...'
+  -@git add --all
+  -@git commit -m '...'
 
 gc:
   # garbage collect all unused nix store entries
-  sudo nix store gc --debug
-  sudo nix-collect-garbage --delete-old
+  @sudo nix store gc --debug
+  @sudo nix-collect-garbage --delete-old
 
 nvim-clean:
-  -rm $HOME/.config/nvim/init.lua
+  @-rm $HOME/.config/nvim/init.lua
 
 nvim-test: nvim-clean
-  ln -s $HOME/.config/nvim/init-user.lua $HOME/.config/nvim/init.lua
+  @ln -s $HOME/.config/nvim/init-user.lua $HOME/.config/nvim/init.lua
+
+# rime-ls:
 
 fmt:
   nix fmt
