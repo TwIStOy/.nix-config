@@ -6,25 +6,29 @@
   ...
 }: let
   isDarwin = lib.strings.hasSuffix "darwin" system;
-in
-  {
-    home.packages = [
-      nur-hawtian.packages.${pkgs.system}.rime-ls
-    ];
-  }
-  // (
+in {
+  home.packages = [
+    nur-hawtian.packages.${pkgs.system}.rime-ls
+  ];
+
+  home.file =
     if isDarwin
     then {
-      home.file."Library/Rime" = {
+      "Library/Rime" = {
         enable = true;
         recursive = true;
         source = ./files;
       };
     }
+    else {};
+
+  xdg.configFile =
+    if isDarwin
+    then {}
     else {
-      xdg.configFile."ibus/rime" = {
+      "ibus/rime" = {
         source = ./files;
         recursive = true;
       };
-    }
-  )
+    };
+}
