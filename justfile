@@ -1,9 +1,9 @@
-ya:
+ya: nvim-clean
   nix build .#darwinConfigurations.yamato.system \
     --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yamato
 
-yu:
+yu: nvim-clean
   nix build .#darwinConfigurations.yukikaze.system \
     --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze --show-trace
@@ -19,8 +19,8 @@ push: commit
   git push
 
 commit:
-  git add --all
-  git commit -m '...'
+  -git add --all
+  -git commit -m '...'
 
 gc:
   # garbage collect all unused nix store entries
