@@ -22,7 +22,7 @@ in {
     }
     else {};
 
-  xdg.dataFile.rime-ls = {
+  xdg.dataFile.rime-ls-files = {
     source = ./files;
     recursive = true;
   };

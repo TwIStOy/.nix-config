@@ -4,7 +4,7 @@ ya:
   ./result/sw/bin/darwin-rebuild switch --flake .#yamato
 
 yu:
-  nix build .#darwinConfigurations.yukikaze.system \
+  nom build .#darwinConfigurations.yukikaze.system \
     --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze --show-trace
 
