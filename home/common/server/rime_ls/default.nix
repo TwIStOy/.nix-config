@@ -22,6 +22,11 @@ in {
     }
     else {};
 
+  xdg.dataFile.rime-ls = {
+    source = ./files;
+    recursive = true;
+  };
+
   xdg.configFile =
     if isDarwin
     then {}

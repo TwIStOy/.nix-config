@@ -1,14 +1,14 @@
-ya: nvim-clean
+ya:
   nix build .#darwinConfigurations.yamato.system \
     --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yamato
 
-yu: nvim-clean
+yu:
   nix build .#darwinConfigurations.yukikaze.system \
     --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --flake .#yukikaze --show-trace
 
-poi: nvim-clean
+poi:
   nom build .#nixosConfigurations.poi.config.system.build.toplevel --show-trace --verbose
   sudo nixos-rebuild switch --flake .#poi
 
