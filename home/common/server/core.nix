@@ -38,7 +38,6 @@
     xclip
     tmux
     fswatch
-    cachix
   ];
 
   programs.nix-index.enable = true;
