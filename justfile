@@ -29,7 +29,7 @@ _nixos_switch hostname details="no": _cleanup_rime_ls_build_prism_bin
   @sudo nixos-rebuild switch --flake .#{{hostname}}
 
 _cleanup_rime_ls_build_prism_bin:
-  @rm $HOME/.local/share/rime-ls-files/build/flypy.prism.bin
+  -@rm $HOME/.local/share/rime-ls-files/build/flypy.prism.bin
 
 up:
   @nix flake update
