@@ -10,6 +10,7 @@ in {
     if isDarwin
     then
       with pkgs; [
+        dart
         cocoapods
       ]
     else
