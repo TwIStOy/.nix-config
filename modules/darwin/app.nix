@@ -31,6 +31,7 @@
       "homebrew/cask-versions"
       "osx-cross/avr"
       "osx-cross/arm"
+      "leoafarias/fvm"
       "qmk/qmk"
     ];
 
@@ -43,6 +44,8 @@
       "gnu-sed"
       "gnu-tar"
       "jq"
+
+      "fvm" # for flutter
     ];
 
     casks = [
