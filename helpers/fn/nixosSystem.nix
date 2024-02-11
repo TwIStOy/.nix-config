@@ -5,6 +5,7 @@
   specialArgs,
   nixos-modules,
   home-modules,
+  agenix,
   ...
 }: let
   inherit (specialArgs) username;
@@ -16,6 +17,7 @@ in
       nixos-modules
       ++ [
         home-manager.nixosModules.home-manager
+        agenix.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

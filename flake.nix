@@ -1,6 +1,44 @@
 {
   description = "Hawtian's nix configuration for both macos and linux";
 
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    flake-utils,
+    pre-commit-hooks,
+    ...
+  }: let
+    configurations = import ./hosts ({
+        inherit inputs;
+      }
+      // inputs);
+
+    formatter = flake-utils.lib.eachDefaultSystem (system: {
+      formatter = nixpkgs.legacyPackages.${system}.alejandra;
+    });
+
+    checks = flake-utils.lib.eachDefaultSystem (system: {
+      pre-commit-check = pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+        };
+      };
+    });
+
+    shells = flake-utils.lib.eachDefaultSystem (system: {
+      devShells = import ./shells {
+        inherit self inputs system;
+      };
+    });
+  in
+    nixpkgs.lib.attrsets.mergeAttrsList [
+      configurations
+      formatter
+      checks
+      shells
+    ];
+
   inputs = {
     # Official NixOS package source, using nixos's stable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -49,45 +87,14 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    # Secrets management
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
-
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    flake-utils,
-    pre-commit-hooks,
-    ...
-  }: let
-    configurations = import ./hosts ({
-        inherit inputs;
-      }
-      // inputs);
-
-    formatter = flake-utils.lib.eachDefaultSystem (system: {
-      formatter = nixpkgs.legacyPackages.${system}.alejandra;
-    });
-
-    checks = flake-utils.lib.eachDefaultSystem (system: {
-      pre-commit-check = pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          alejandra.enable = true;
-        };
-      };
-    });
-
-    shells = flake-utils.lib.eachDefaultSystem (system: {
-      devShells = import ./shells {
-        inherit self inputs system;
-      };
-    });
-  in
-    nixpkgs.lib.attrsets.mergeAttrsList [
-      configurations
-      formatter
-      checks
-      shells
-    ];
 
   nixConfig = {
     # substituers will be appended to the default substituters when fetching packages

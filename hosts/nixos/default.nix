@@ -5,6 +5,7 @@
   flake-utils,
   nixpkgs,
   ht-fn,
+  agenix,
   ...
 }: let
   buildSystem = {
@@ -14,8 +15,11 @@
     ht-fn.nixosSystem (
       inputs.nixpkgs.lib.attrsets.mergeAttrsList [
         {
-          inherit home-manager inputs ht-fn;
+          inherit home-manager;
+          inherit inputs;
+          inherit ht-fn;
           inherit nixpkgs;
+          inherit agenix;
         }
         host-modules
         {

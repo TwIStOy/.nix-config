@@ -4,6 +4,7 @@
   nix-darwin,
   nixpkgs-darwin,
   home-manager,
+  agenix,
   flake-utils,
   ...
 }: let
@@ -32,6 +33,7 @@
     inherit nix-darwin;
     inherit nixpkgs-darwin;
     inherit home-manager;
+    inherit agenix;
     inherit flake-utils;
     inherit buildExtraSpecialArgs;
     inherit inputs;
@@ -40,6 +42,7 @@
   nixos-hosts = import ./nixos {
     inherit nixpkgs;
     inherit home-manager;
+    inherit agenix;
     inherit flake-utils;
     inherit buildExtraSpecialArgs;
     inherit inputs;

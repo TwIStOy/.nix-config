@@ -5,6 +5,7 @@
   flake-utils,
   buildExtraSpecialArgs,
   inputs,
+  agenix,
   ht-fn,
   ...
 }: let
@@ -15,7 +16,11 @@
     ht-fn.darwinSystem (
       inputs.nixpkgs.lib.attrsets.mergeAttrsList [
         {
-          inherit nix-darwin home-manager inputs ht-fn;
+          inherit nix-darwin;
+          inherit home-manager;
+          inherit inputs;
+          inherit ht-fn;
+          inherit agenix;
           nixpkgs = nixpkgs-darwin;
         }
         host-modules
