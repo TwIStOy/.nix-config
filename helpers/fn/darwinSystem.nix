@@ -5,7 +5,6 @@
   home-manager,
   darwin-modules,
   home-modules, # modules for home-manager
-  agenix,
   ...
 }: let
   inherit (specialArgs) username;
@@ -18,7 +17,6 @@ in
       ++ [
         # enable home-manager
         home-manager.darwinModules.home-manager
-        agenix.darwinModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
