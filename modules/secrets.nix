@@ -5,16 +5,18 @@
   username,
   agenix,
   ...
-}: let
-  # ageSecret = {
-  #   file,
-  #   owner ? "root",
-  #   mode ? "400",
-  # }: {
-  #   file = "${hyperSelf}/secrets/${file}";
-  #   inherit owner mode;
-  # };
-in {
+}:
+# let
+#   # ageSecret = {
+#   #   file,
+#   #   owner ? "root",
+#   #   mode ? "400",
+#   # }: {
+#   #   file = "${hyperSelf}/secrets/${file}";
+#   #   inherit owner mode;
+#   # };
+# in 
+{
   environment.systemPackages = [
     agenix.packages."${pkgs.system}".default
   ];
