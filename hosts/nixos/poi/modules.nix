@@ -1,6 +1,8 @@
 {
   secrets-hawtian,
   pkgs-unstable,
+  config,
+  lib,
   ...
 }: let
   hostname = "poi";
@@ -35,7 +37,8 @@ in {
     package = pkgs-unstable.frp;
     role = "client";
     settings = {
-      inherit (frp-secrets) serverAddr serverPort auth;
+      inherit (frp-secrets) serverAddr serverPort;
+      auto.token = lib.readFile config.age.secrets.frp-server-autoo.path;
       proxies = [
         {
           name = "poi-host-ssh";

@@ -2,6 +2,8 @@
 {
   username,
   userfullname,
+  agenix,
+  system,
   ...
 } @ args: {
   users.users.${username} = {
@@ -10,6 +12,10 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG92SyvgOOe9pGPGHEY9VbDBWwqaRgm9tg1RJUxlfdCN MainSSH"
     ];
   };
+
+  environment.systemPackages = [
+    agenix.packages.${system}.default
+  ];
 
   nixpkgs.overlays = [
     args.neovim-nightly-overlay.overlay
