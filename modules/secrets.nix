@@ -26,7 +26,7 @@ in {
 
   age.secrets = {
     frp-server-auth = ageSecret {
-      file = "${hyperSelf}/secrets/frp-server-auth.age";
+      file = "frp-server-auth.age";
       owner = username;
     };
   };
