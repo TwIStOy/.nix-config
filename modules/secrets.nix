@@ -6,19 +6,15 @@
   agenix,
   ...
 }: let
-  ageSecret = {
-    file,
-    owner ? "root",
-    mode ? "400",
-  }: {
-    file = "${hyperSelf}/secrets/${file}";
-    inherit owner mode;
-  };
+  # ageSecret = {
+  #   file,
+  #   owner ? "root",
+  #   mode ? "400",
+  # }: {
+  #   file = "${hyperSelf}/secrets/${file}";
+  #   inherit owner mode;
+  # };
 in {
-  imports = [
-    agenix.darwinModules.default
-  ];
-
   environment.systemPackages = [
     agenix.packages."${pkgs.system}".default
   ];
@@ -28,10 +24,10 @@ in {
     "${config.users.users.${username}}/.ssh/id_ed25519"
   ];
 
-  # age.secrets = {
-  #   "frp-server-auth" = ageSecret {
-  #     file = "frp-server-auth.age";
-  #     owner = username;
-  #   };
-  # };
+  age.secrets = {
+    frp-server-auth = {
+      file = "${hyperSelf}/secrets/frp-server-auth.age";
+      owner = username;
+    };
+  };
 }

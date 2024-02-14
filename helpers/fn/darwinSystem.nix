@@ -1,6 +1,7 @@
 {
   nix-darwin,
   system,
+  agenix,
   specialArgs,
   home-manager,
   darwin-modules,
@@ -17,6 +18,7 @@ in
       ++ [
         # enable home-manager
         home-manager.darwinModules.home-manager
+        agenix.darwinModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
