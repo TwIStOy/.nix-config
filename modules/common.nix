@@ -36,4 +36,9 @@
     ];
     builders-use-substitutes = true;
   };
+
+  imports = [
+    ./secrets.nix
+  ];
+
 }

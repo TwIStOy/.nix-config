@@ -10,6 +10,7 @@
   }: let
     configurations = import ./hosts ({
         inherit inputs;
+        hyperSelf = self;
       }
       // inputs);
 

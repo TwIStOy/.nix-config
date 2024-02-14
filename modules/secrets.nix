@@ -1,20 +1,17 @@
 {
-  self,
+  hyperSelf,
   lib,
   config,
   username,
-  system,
   ...
 }: let
-  inherit (lib) mkMerge;
-
   ageSecret = {
     file,
     owner ? "root",
     group ? "root",
     mode ? "400",
   }: {
-    file = "${self}/secrets/${file}";
+    file = "${hyperSelf}/secrets/${file}";
     inherit owner group mode;
   };
 in {
@@ -23,13 +20,11 @@ in {
     "${config.users.users.${username}}/.ssh/id_ed25519"
   ];
 
-  age.secrets = mkMerge [
-    {
-      frp-server-auth = ageSecret {
-        file = "frp-server-auth.age";
-        owner = username;
-        group = "users";
-      };
-    }
-  ];
+  age.secrets = {
+    frp-server-auth = ageSecret {
+      file = "frp-server-auth.age";
+      owner = username;
+      group = "users";
+    };
+  };
 }

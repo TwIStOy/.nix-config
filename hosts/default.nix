@@ -6,6 +6,7 @@
   home-manager,
   agenix,
   flake-utils,
+  hyperSelf,
   ...
 }: let
   constants = import ../helpers/constants.nix;
@@ -13,8 +14,7 @@
   buildExtraSpecialArgs = system:
     {
       inherit (constants) username userfullname useremail;
-      inherit ht-fn;
-      inherit system;
+      inherit ht-fn system hyperSelf;
       pkgs-darwin = import inputs.nixpkgs-darwin {
         inherit system;
         config.allowUnfree = true;
@@ -30,23 +30,29 @@
     }
     // inputs;
   darwin-hosts = import ./darwin {
-    inherit nix-darwin;
-    inherit nixpkgs-darwin;
-    inherit home-manager;
-    inherit agenix;
-    inherit flake-utils;
-    inherit buildExtraSpecialArgs;
-    inherit inputs;
-    inherit ht-fn;
+    inherit
+      nix-darwin
+      nixpkgs-darwin
+      home-manager
+      agenix
+      flake-utils
+      buildExtraSpecialArgs
+      inputs
+      ht-fn
+      hyperSelf
+      ;
   };
   nixos-hosts = import ./nixos {
-    inherit nixpkgs;
-    inherit home-manager;
-    inherit agenix;
-    inherit flake-utils;
-    inherit buildExtraSpecialArgs;
-    inherit inputs;
-    inherit ht-fn;
+    inherit
+      nixpkgs
+      home-manager
+      agenix
+      flake-utils
+      buildExtraSpecialArgs
+      inputs
+      ht-fn
+      hyperSelf
+      ;
   };
 in
   darwin-hosts
