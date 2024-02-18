@@ -46,6 +46,10 @@
       "jq"
 
       "fvm" # for flutter
+
+      # xcode related tools
+      "xcbeautify" # beautifier tool for xcodebuild
+      "xcode-build-server" # xcodeproject to lspconfigs
     ];
 
     casks = [
