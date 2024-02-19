@@ -29,5 +29,19 @@ in {
       file = "frp-server-auth.age";
       owner = username;
     };
+    atuin-key = ageSecret {
+      file = "atuin-key.age";
+      owner = username;
+    };
+    atuin-client-config = ageSecret {
+      file = "atuin-client-config.age";
+      owner = username;
+    };
+  };
+
+  environment.etc = {
+    "agenix/atuin-client-config.toml" = {
+      source = config.age.secrets.atuin-client-config.path;
+    };
   };
 }
