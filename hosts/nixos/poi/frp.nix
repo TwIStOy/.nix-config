@@ -1,10 +1,8 @@
 {
-  secrets-hawtian,
   pkgs-unstable,
+  config,
   ...
-}: let
-  frp-secrets = builtins.fromJSON (builtins.readFile "${secrets-hawtian}/frp-secret.json");
-in {
+}: {
   disabledModules = [
     "services/networking/frp.nix"
   ];
@@ -13,12 +11,20 @@ in {
     "${pkgs-unstable.path}/nixos/modules/services/networking/frp.nix"
   ];
 
+  environment.etc = {
+    "frp/frp-server-auth.toml" = {
+      source = config.age.secrets."frp-server-auth.toml".path;
+    };
+  };
+
   services.frp = {
     enable = true;
     package = pkgs-unstable.frp;
     role = "client";
     settings = {
-      inherit (frp-secrets) serverAddr serverPort auth;
+      includes = [
+        "/etc/frp/frp-server-auth.toml"
+      ];
       proxies = [
         {
           name = "poi-host-ssh";
