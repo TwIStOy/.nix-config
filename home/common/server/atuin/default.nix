@@ -1,4 +1,8 @@
-{osConfig, ...}: {
+{
+  config,
+  osConfig,
+  ...
+}: {
   programs.atuin = {
     enable = true;
     enableBashIntegration = true;
@@ -7,6 +11,6 @@
   };
 
   xdg.configFile."atuin/config.toml" = {
-    source = osConfig.age.secrets.atuin-client-config.path;
+    source = config.lib.file.mkOutOfStoreSymlink "${osConfig.age.secrets.atuin-client-config.path}";
   };
 }

@@ -38,10 +38,4 @@ in {
       owner = username;
     };
   };
-
-  environment.etc = {
-    "agenix/atuin-client-config.toml" = {
-      source = config.age.secrets.atuin-client-config.path;
-    };
-  };
 }
