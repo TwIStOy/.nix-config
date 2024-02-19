@@ -66,7 +66,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur-hawtian.url = "github:TwIStOy/nur-packages?rev=55e48506fb6f662426acb3104f09e8b15bcdcdb4";
+    nur-hawtian.url = "github:TwIStOy/nur-packages?rev=587ad47e40ea8c3600dfc3f6b5b4c948f764ca1d";
 
     secrets-hawtian = {
       url = "git+ssh://git@github.com/TwIStOy/nix-secret.git?shallow=1";

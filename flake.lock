@@ -603,17 +603,17 @@
         "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {
-        "lastModified": 1707041614,
-        "narHash": "sha256-CMF32cAaSOrxFqh6AU60fEuZBmYMRM/L78eb8Wgx21Q=",
+        "lastModified": 1708338605,
+        "narHash": "sha256-CBiw/yGvGMshxp+sWjU6/l0nMrEo9FgPDEUI0+louT4=",
         "owner": "TwIStOy",
         "repo": "nur-packages",
-        "rev": "55e48506fb6f662426acb3104f09e8b15bcdcdb4",
+        "rev": "587ad47e40ea8c3600dfc3f6b5b4c948f764ca1d",
         "type": "github"
       },
       "original": {
         "owner": "TwIStOy",
         "repo": "nur-packages",
-        "rev": "55e48506fb6f662426acb3104f09e8b15bcdcdb4",
+        "rev": "587ad47e40ea8c3600dfc3f6b5b4c948f764ca1d",
         "type": "github"
       }
     },
