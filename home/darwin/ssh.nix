@@ -1,4 +1,4 @@
-{...}: let
+{osConfig, ...}: let
   one-password-agent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
 in {
   programs.ssh = {
@@ -11,6 +11,7 @@ in {
     };
     includes = [
       "~/.orbstack/ssh/config"
+      "${osConfig.age.secrets.ssh-remote-host-config.path}"
     ];
     matchBlocks = {
       "dev.work.remote" = {

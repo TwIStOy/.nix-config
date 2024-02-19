@@ -38,5 +38,9 @@ in {
       file = "atuin-client-config.age";
       owner = username;
     };
+    ssh-remote-host-config = ageSecret {
+      file = "ssh-remote-hosts.age";
+      owner = username;
+    };
   };
 }

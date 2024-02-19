@@ -24,4 +24,5 @@ in {
   "frp-server-auth.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "atuin-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "atuin-client-config.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "ssh-remote-hosts.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }
