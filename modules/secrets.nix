@@ -25,7 +25,7 @@ in {
   ];
 
   age.secrets = {
-    frp-server-auth = ageSecret {
+    "frp-server-auth.toml" = ageSecret {
       file = "frp-server-auth.age";
       owner = username;
     };
