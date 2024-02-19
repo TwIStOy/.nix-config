@@ -13,36 +13,5 @@ in {
       "~/.orbstack/ssh/config"
       "${osConfig.age.secrets.ssh-remote-host-config.path}"
     ];
-    matchBlocks = {
-      "dev.work.remote" = {
-        user = "hawtian";
-        port = 4000;
-        hostname = "frp2.twistoy.cn";
-        serverAliveInterval = 30;
-        serverAliveCountMax = 60;
-      };
-      "poi.remote" = {
-        hostname = "frp2.twistoy.cn";
-        port = 4002;
-        user = "hawtian";
-        forwardAgent = true;
-        forwardX11 = true;
-        extraOptions = {
-          KeepAlive = "yes";
-        };
-      };
-      "agora-jump" = {
-        user = "wanghaotian@agora.io";
-        hostname = "braum-ssh.agoralab.co";
-        port = 20221;
-        extraOptions = {
-          ControlPath = "~/.ssh/braum-%r@%h:%p";
-          PubkeyAcceptedAlgorithms = "+ssh-rsa";
-          HostkeyAlgorithms = "+ssh-rsa";
-          ControlMaster = "auto";
-          ControlPersist = "yes";
-        };
-      };
-    };
   };
 }
