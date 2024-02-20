@@ -2,7 +2,11 @@
   programs.lazygit = {
     enable = true;
     settings = {
+      gui = {
+        mouseEvents = true;
+        nerdFontsVersion = "3";
+        border = "single";
+      };
     };
   };
-  # {  gui.theme = {    lightTheme = true;    activeBorderColor = [ "blue" "bold" ];    inactiveBorderColor = [ "black" ];    selectedLineBgColor = [ "default" ];  };}
 }
