@@ -51,8 +51,6 @@
       "xcbeautify" # beautifier tool for xcodebuild
       "xcode-build-server" # xcodeproject to lspconfigs
       "swift-format"
-
-      "neovide"
     ];
 
     casks = [
@@ -66,6 +64,7 @@
       "karabiner-elements"
       "jetbrains-toolbox"
       "tailscale"
+      "neovide"
     ];
   };
 }
