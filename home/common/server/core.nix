@@ -14,7 +14,6 @@
 
     just
     delta
-    zoxide
     (ripgrep.override {withPCRE2 = true;})
     hyperfine
     fd
@@ -34,7 +33,6 @@
     jq
     yq-go
 
-    lazygit
     xclip
     tmux
     fswatch
