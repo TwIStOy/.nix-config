@@ -7,6 +7,7 @@
         nerdFontsVersion = "3";
         border = "single";
       };
+      notARepository = "skip";
     };
   };
 }

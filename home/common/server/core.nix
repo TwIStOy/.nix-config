@@ -34,7 +34,6 @@
     yq-go
 
     xclip
-    tmux
     fswatch
   ];
 

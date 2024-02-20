@@ -27,5 +27,6 @@
     nvi = "nvim";
     v = "nvim";
     j = "just";
+    lg = "lazygit";
   };
 }
