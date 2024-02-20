@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   secrets-hawtian,
   lib,
   ...
@@ -36,7 +37,7 @@ in {
       pkgs.monaspace
       # nerdfonts
       # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/pkgs/data/fonts/nerdfonts/shas.nix
-      (pkgs.nerdfonts.override {
+      (pkgs-unstable.nerdfonts.override {
         fonts = [
           # symbols icon only
           "NerdFontsSymbolsOnly"
@@ -44,6 +45,7 @@ in {
           "FiraCode"
           "JetBrainsMono"
           "Iosevka"
+          "Monaspace"
         ];
       })
     ];
