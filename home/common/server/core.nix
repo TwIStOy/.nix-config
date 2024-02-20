@@ -5,7 +5,7 @@
     vim
 
     rsync
-    tldr
+    tealdeer
 
     zip
     xz
