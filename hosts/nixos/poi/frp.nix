@@ -31,6 +31,13 @@
         name = "poi-ssh-p2p"
         secretKey = "hawtian"
         type = "xtcp"
+
+        [[proxies]]
+        localIP = "127.0.0.1"
+        localPort = 8080
+        name = "copilot-gpt4-service"
+        remotePort = 7000
+        type = "tcp"
       '';
     };
   };
