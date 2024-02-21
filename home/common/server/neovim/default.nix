@@ -2,11 +2,36 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
+  nur-hawtian,
   ...
 }: let
   programs = lib.makeBinPath [
     pkgs.nodePackages.nodejs
   ];
+
+  dotpath = "${config.home.homeDirectory}/.local/share/dotvim";
+  user-dotpath = "${config.home.homeDirectory}/.dotvim";
+
+  plugins = {
+    telescope-fzf-native-nvim = pkgs-unstable.vimPlugins.telescope-fzf-native-nvim;
+    gh-actions-nvim = nur-hawtian.packages.${pkgs.system}.vimPlugins.gh-actions-nvim;
+  };
+
+  injectPluginDirs =
+    builtins.foldl' (acc: x: acc + "\n" + x + ",") "" (lib.mapAttrsToList (name: pkg: "[\"${name}\"] = \"${pkg}\"") plugins);
+
+  init-lua = dpath: ''
+    vim.loader.enable()
+
+    local dotpath = "${dpath}"
+    vim.api.nvim_command("set runtimepath+=" .. dotpath)
+    _G["nix_plugins"] = {
+      ${injectPluginDirs}
+    }
+
+    require("ht.init")
+  '';
 in {
   home.packages = with pkgs; [
     python3.pkgs.pynvim
@@ -17,43 +42,21 @@ in {
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
-    plugins = with pkgs; [
-      vimPlugins.telescope-fzf-native-nvim
-    ];
+    plugins = builtins.attrValues plugins;
   };
 
   xdg.configFile."nvim/init.lua" = {
-    text = ''
-      vim.loader.enable()
-
-      local dotpath = "${config.home.homeDirectory}/.local/share/dotvim"
-      vim.api.nvim_command("set runtimepath+=" .. dotpath)
-      _G["nix_plugins"] = {
-        ["telescope-fzf-native-nvim"] = "${pkgs.vimPlugins.telescope-fzf-native-nvim}"
-      }
-
-      require("ht.init")
-    '';
+    text = init-lua dotpath;
   };
 
   xdg.configFile."nvim/init-user.lua" = {
-    text = ''
-      vim.loader.enable()
-
-      local dotpath = vim.fn.expand("$HOME") .. "/.dotvim"
-      vim.api.nvim_command("set runtimepath+=" .. dotpath)
-      _G["nix_plugins"] = {
-        ["telescope-fzf-native-nvim"] = "${pkgs.vimPlugins.telescope-fzf-native-nvim}"
-      }
-
-      require("ht.init")
-    '';
+    text = init-lua user-dotpath;
   };
 
   xdg.dataFile."dotvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/TwIStOy/dotvim.git";
-      rev = "c030538ca14ae8234fa5e01acab816dbc7cefa15";
+      rev = "0ac3368911896aa20ac7a209e8184eb3da02a400";
     };
     recursive = true;
     onChange = "${pkgs.writeShellScript "dotvim-post-install" ''
