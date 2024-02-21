@@ -25,4 +25,5 @@ in {
   "atuin-key.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "atuin-client-config.age".publicKeys = mkSecrets (homeServers ++ desktops);
   "ssh-remote-hosts.age".publicKeys = mkSecrets (homeServers ++ desktops);
+  "copilot-gpt4-service-env.age".publicKeys = mkSecrets (homeServers ++ desktops);
 }

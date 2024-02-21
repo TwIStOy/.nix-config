@@ -42,5 +42,9 @@ in {
       file = "ssh-remote-hosts.age";
       owner = username;
     };
+    copilot-gpt4-service-env = ageSecret {
+      file = "copilot-gpt4-service-env.age";
+      owner = username;
+    };
   };
 }
