@@ -35,7 +35,7 @@
         [[proxies]]
         localIP = "127.0.0.1"
         localPort = 8080
-        name = "copilot-gpt4-service"
+        name = "copilot-next-web"
         remotePort = 9000
         type = "tcp"
       '';

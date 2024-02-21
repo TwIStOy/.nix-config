@@ -46,5 +46,9 @@ in {
       file = "copilot-gpt4-service-env.age";
       owner = username;
     };
+    chatgpt-next-web-env = ageSecret {
+      file = "chatgpt-next-web.age";
+      owner = username;
+    };
   };
 }
