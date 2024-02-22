@@ -60,7 +60,7 @@ in {
   xdg.dataFile."dotvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/TwIStOy/dotvim.git";
-      rev = "554ca47f6c6f390334ebd5138144886ffb5eecf0";
+      rev = "94194444944b83cdfd96fed0265bbe3d200aea8b";
     };
     recursive = true;
     onChange = "${pkgs.writeShellScript "dotvim-post-install" ''
