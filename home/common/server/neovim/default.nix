@@ -13,10 +13,14 @@
   dotpath = "${config.home.homeDirectory}/.local/share/dotvim";
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
-  plugins = {
-    telescope-fzf-native-nvim = pkgs-unstable.vimPlugins.telescope-fzf-native-nvim;
-    gh-actions-nvim = nur-hawtian.packages.${pkgs.system}.vimPlugins.gh-actions-nvim;
-  };
+  plugins =
+    {
+      gh-actions-nvim = nur-hawtian.packages.${pkgs.system}.vimPlugins.gh-actions-nvim;
+    }
+    // (with pkgs-unstable; {
+      telescope-fzf-native-nvim = vimPlugins.telescope-fzf-native-nvim;
+      markdown-preview-nvim = vimPlugins.markdown-preview-nvim;
+    });
 
   injectPluginDirs =
     builtins.foldl' (acc: x: acc + "\n" + x + ",") "" (lib.mapAttrsToList (name: pkg: "[\"${name}\"] = \"${pkg}\"") plugins);
@@ -56,7 +60,7 @@ in {
   xdg.dataFile."dotvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/TwIStOy/dotvim.git";
-      rev = "2b02a0a67857e29a23efe9852f657a4b2d86ece8";
+      rev = "554ca47f6c6f390334ebd5138144886ffb5eecf0";
     };
     recursive = true;
     onChange = "${pkgs.writeShellScript "dotvim-post-install" ''
