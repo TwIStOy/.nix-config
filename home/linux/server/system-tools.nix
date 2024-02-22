@@ -5,6 +5,7 @@
     bpftrace
     tcpdump
     lsof
+    socat
 
     pciutils
     usbutils
