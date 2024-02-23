@@ -1,9 +1,12 @@
 {
   pkgs,
   pkgs-unstable,
+  system,
+  lib,
   ...
 }: let
   settingsFormat = pkgs.formats.toml {};
+  isDarwin = lib.strings.hasSuffix "darwin" system;
 in {
   home.packages =
     if !pkgs.stdenv.isDarwin
@@ -19,7 +22,10 @@ in {
     srgb = true;
     idle = true;
     neovim-bin = "${pkgs.neovim-nightly}/bin/nvim";
-    frame = "full";
+    frame =
+      if isDarwin
+      then "transparent"
+      else "full";
 
     font = {
       normal = {family = "MonoLisa Nerd Font";};
