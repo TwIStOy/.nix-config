@@ -36,6 +36,13 @@
 
     require("ht.init")
   '';
+
+  init-dora = ''
+    vim.loader.enable()
+    local dotpath = "${user-dotpath}"
+    vim.opt.rtp:prepend(dotpath)
+    require("dotvim").setup()
+  '';
 in {
   home.packages = with pkgs; [
     python3.pkgs.pynvim
@@ -57,10 +64,14 @@ in {
     text = init-lua user-dotpath;
   };
 
+  xdg.configFile."nvim/init-dora.lua" = {
+    text = init-dora;
+  };
+
   xdg.dataFile."dotvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/TwIStOy/dotvim.git";
-      rev = "ff7546beae0f8b682333fcfbc9286e4dc69d5b8a";
+      rev = "aa291207b5e473384f18e531c6dfb4b1db08183d";
     };
     recursive = true;
     onChange = "${pkgs.writeShellScript "dotvim-post-install" ''
