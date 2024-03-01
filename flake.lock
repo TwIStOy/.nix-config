@@ -768,17 +768,17 @@
         "nixpkgs-stable": "nixpkgs-stable_3"
       },
       "locked": {
-        "lastModified": 1708596996,
-        "narHash": "sha256-9O3q+CLZPJ5iOOoIm3cNcI8D1FKtfFbGTPqEgkHYJlw=",
+        "lastModified": 1709206599,
+        "narHash": "sha256-daVJxH0bSpifTOonpCwonlCYShY+RshQasGkRwlSOQw=",
         "owner": "TwIStOy",
         "repo": "nur-packages",
-        "rev": "18b09f26003b9ba5b6fead756986037b70b8f609",
+        "rev": "22d70069a0be5898cecf8c9f80dd6f4378421cbb",
         "type": "github"
       },
       "original": {
         "owner": "TwIStOy",
         "repo": "nur-packages",
-        "rev": "18b09f26003b9ba5b6fead756986037b70b8f609",
+        "rev": "22d70069a0be5898cecf8c9f80dd6f4378421cbb",
         "type": "github"
       }
     },
