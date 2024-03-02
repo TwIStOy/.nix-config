@@ -10,7 +10,6 @@
     pkgs.nodePackages.nodejs
   ];
 
-  dotpath = "${config.home.homeDirectory}/.local/share/dotvim";
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
   plugins =
@@ -25,10 +24,10 @@
   injectPluginDirs =
     builtins.foldl' (acc: x: acc + "\n" + x + ",") "" (lib.mapAttrsToList (name: pkg: "[\"${name}\"] = \"${pkg}\"") plugins);
 
-  init-lua = dpath: ''
+  init-deprecated = ''
     vim.loader.enable()
 
-    local dotpath = "${dpath}"
+    local dotpath = "${user-dotpath}"
     vim.api.nvim_command("set runtimepath+=" .. dotpath)
     _G["nix_plugins"] = {
       ${injectPluginDirs}
@@ -56,30 +55,35 @@ in {
     plugins = builtins.attrValues plugins;
   };
 
-  xdg.configFile."nvim/init.lua" = {
-    text = init-lua dotpath;
-  };
-
-  xdg.configFile."nvim/init-user.lua" = {
-    text = init-lua user-dotpath;
-  };
-
-  xdg.configFile."nvim/init-dora.lua" = {
-    text = init-dora;
-  };
-
-  xdg.dataFile."dotvim" = {
-    source = builtins.fetchGit {
-      url = "https://github.com/TwIStOy/dotvim.git";
-      rev = "aa291207b5e473384f18e531c6dfb4b1db08183d";
+  xdg.configFile = {
+    "nvim/init-deprecated.lua" = {
+      text = init-deprecated;
+      force = true;
     };
-    recursive = true;
-    onChange = "${pkgs.writeShellScript "dotvim-post-install" ''
-      echo "Running post-install script"
-      export PATH=$PATH:${programs}
-      cd ${config.home.homeDirectory}/.local/share/dotvim
-      npm ci
-      npm run build
-    ''}";
+
+    "nvim/init-dora.lua" = {
+      text = init-dora;
+      force = true;
+    };
+
+    "nvim/init.lua" = {
+      text = init-dora;
+      force = true;
+    };
   };
+
+  # xdg.dataFile."dotvim" = {
+  #   source = builtins.fetchGit {
+  #     url = "https://github.com/TwIStOy/dotvim.git";
+  #     rev = "5885fb0103132005f83a07b87bf7c8bff081eb6a";
+  #   };
+  #   recursive = true;
+  #   onChange = "${pkgs.writeShellScript "dotvim-post-install" ''
+  #     echo "Running post-install script"
+  #     export PATH=$PATH:${programs}
+  #     cd ${config.home.homeDirectory}/.local/share/dotvim
+  #     npm ci
+  #     npm run build
+  #   ''}";
+  # };
 }
