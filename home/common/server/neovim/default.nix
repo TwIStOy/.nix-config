@@ -6,10 +6,6 @@
   nur-hawtian,
   ...
 }: let
-  programs = lib.makeBinPath [
-    pkgs.nodePackages.nodejs
-  ];
-
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
   plugins =
@@ -21,20 +17,32 @@
       markdown-preview-nvim = vimPlugins.markdown-preview-nvim;
     });
 
-  injectPluginDirs =
-    builtins.foldl' (acc: x: acc + "\n" + x + ",") "" (lib.mapAttrsToList (name: pkg: "[\"${name}\"] = \"${pkg}\"") plugins);
+  bins = with pkgs; {
+    fzf = fzf;
+    stylua = stylua;
+    lua-language-server = lua-language-server;
+  };
 
-  init-deprecated = ''
-    vim.loader.enable()
+  nixAwareNvimConfig = pkgs.stdenv.mkDerivation {
+    name = "nix-aware-nvim-config";
 
-    local dotpath = "${user-dotpath}"
-    vim.api.nvim_command("set runtimepath+=" .. dotpath)
-    _G["nix_plugins"] = {
-      ${injectPluginDirs}
-    }
+    buildInputs = lib.mapAttrsToList (_: pkg: pkg) plugins;
 
-    require("ht.init")
-  '';
+    phases = ["installPhase"];
+
+    nixAwareNvimConfigJson =
+      pkgs.writeText
+      "nixAwareNvimConfig.json"
+      (builtins.toJSON {
+        pkgs = plugins;
+        bin = lib.mapAttrs (name: pkg: "${pkg}/bin/${name}") bins;
+      });
+
+    installPhase = ''
+      mkdir -p $out
+      cp $nixAwareNvimConfigJson $out/nix-aware.json
+    '';
+  };
 
   init-dora = ''
     vim.loader.enable()
@@ -47,6 +55,7 @@ in {
     python3.pkgs.pynvim
     nodePackages.neovim
     tree-sitter
+    nixAwareNvimConfig
   ];
 
   programs.neovim = {
@@ -56,11 +65,6 @@ in {
   };
 
   xdg.configFile = {
-    "nvim/init-deprecated.lua" = {
-      text = init-deprecated;
-      force = true;
-    };
-
     "nvim/init-dora.lua" = {
       text = init-dora;
       force = true;
@@ -70,20 +74,10 @@ in {
       text = init-dora;
       force = true;
     };
-  };
 
-  # xdg.dataFile."dotvim" = {
-  #   source = builtins.fetchGit {
-  #     url = "https://github.com/TwIStOy/dotvim.git";
-  #     rev = "5885fb0103132005f83a07b87bf7c8bff081eb6a";
-  #   };
-  #   recursive = true;
-  #   onChange = "${pkgs.writeShellScript "dotvim-post-install" ''
-  #     echo "Running post-install script"
-  #     export PATH=$PATH:${programs}
-  #     cd ${config.home.homeDirectory}/.local/share/dotvim
-  #     npm ci
-  #     npm run build
-  #   ''}";
-  # };
+    "nvim/nix-aware.json" = {
+      source = "${nixAwareNvimConfig}/nix-aware.json";
+      force = true;
+    };
+  };
 }

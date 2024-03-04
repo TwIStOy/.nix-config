@@ -7,7 +7,7 @@
   nixAwareClangdConfig = pkgs.stdenv.mkDerivation {
     name = "nix-aware-clangd-config";
 
-    buildInputs = [gcc];
+    nativeBuildInputs = [gcc];
 
     dontUnpack = true;
     phases = ["installPhase"];

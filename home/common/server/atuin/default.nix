@@ -12,5 +12,6 @@
 
   xdg.configFile."atuin/config.toml" = {
     source = config.lib.file.mkOutOfStoreSymlink "${osConfig.age.secrets.atuin-client-config.path}";
+    force = true;
   };
 }
