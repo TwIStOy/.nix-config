@@ -23,6 +23,23 @@
       platforms = lib.platforms.all;
     };
   };
+
+  maple-font = pkgs.stdenv.mkDerivation rec {
+    name = "maple-font";
+    version = "V7.0-Beta7";
+    src = builtins.fetchTarball {
+      url = "https://github.com/subframe7536/maple-font/releases/download/${version}/nerdfont.zip";
+      sha256 = "";
+    };
+
+    installPhase = ''
+      runHook preInstall
+
+      install -Dm64 *.ttf -t $out/share/fonts/truetype
+
+      runHook postInstall
+    '';
+  };
 in {
   fonts = {
     # will be removed after this PR is merged:
@@ -33,6 +50,7 @@ in {
     #   https://github.com/LnL7/nix-darwin/pull/754
     fonts = [
       monolisa
+      maple-font
 
       pkgs.monaspace
       # nerdfonts
