@@ -24,13 +24,17 @@
     };
   };
 
-  maple-font = pkgs.stdenv.mkDerivation rec {
+  maple-font = pkgs.stdenv.mkDerivation {
     name = "maple-font";
-    version = "V7.0-Beta7";
+    version = "v7.0-Beta7";
     src = builtins.fetchTarball {
-      url = "https://github.com/subframe7536/maple-font/releases/download/${version}/nerdfont.zip";
+      url = "https://github.com/subframe7536/maple-font/releases/download/v7.0-beta7/nerdfont.zip";
       sha256 = "";
     };
+    nativeBuildInputs = with pkgs; [unzip];
+    unpackPhase = ''
+      unzip $src
+    '';
 
     installPhase = ''
       runHook preInstall
