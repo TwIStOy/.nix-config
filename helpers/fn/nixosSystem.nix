@@ -19,11 +19,13 @@ in
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
 
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${username}" = home-modules;
+            extraSpecialArgs = specialArgs;
+            users."${username}" = home-modules;
+          };
         }
       ];
   }

@@ -1,4 +1,4 @@
-{...}: {
+_: {
   launchd.agents = {
     pbcopy = {
       enable = true;

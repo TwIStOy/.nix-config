@@ -3,7 +3,7 @@
   nur-hawtian,
   ...
 }: let
-  gcc = pkgs.gcc;
+  inherit (pkgs) gcc;
   nixAwareClangdConfig = pkgs.stdenv.mkDerivation {
     name = "nix-aware-clangd-config";
 

@@ -1,4 +1,4 @@
-{...}: let
+_: let
   hostname = "poi";
 in {
   imports = [
@@ -10,9 +10,11 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = hostname;
-  networking.networkmanager.enable = true;
-  networking.proxy.default = "http://192.168.50.217:8888";
+  networking = {
+    hostName = hostname;
+    networkmanager.enable = true;
+    proxy.default = "http://192.168.50.217:8888";
+  };
 
   # Configure keymap in X11
   services.xserver = {

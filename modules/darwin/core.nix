@@ -4,12 +4,14 @@
   ...
 }: {
   services.nix-daemon.enable = true;
-  nix.package = pkgs.nix;
+  nix = {
+    package = pkgs.nix;
+
+    settings.auto-optimise-store = false;
+    gc.automatic = false;
+  };
 
   nixpkgs.config.allowUnfree = true;
-
-  nix.settings.auto-optimise-store = false;
-  nix.gc.automatic = false;
 
   users.users."${username}" = {
     home = "/Users/${username}";

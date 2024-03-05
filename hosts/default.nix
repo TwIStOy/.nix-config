@@ -10,7 +10,7 @@
   ...
 }: let
   constants = import ../helpers/constants.nix;
-  ht-fn = import ../helpers/fn {nixpkgs = inputs.nixpkgs;};
+  ht-fn = import ../helpers/fn {inherit (inputs) nixpkgs;};
   buildExtraSpecialArgs = system:
     {
       inherit (constants) username userfullname useremail;

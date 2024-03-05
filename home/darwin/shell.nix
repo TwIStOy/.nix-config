@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  osConfig,
-  ...
-}: let
+_: let
   envExtra = ''
     export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
     source "$HOME/.cargo/env"

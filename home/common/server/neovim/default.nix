@@ -8,19 +8,14 @@
 }: let
   user-dotpath = "${config.home.homeDirectory}/.dotvim";
 
-  plugins =
-    {
-      gh-actions-nvim = nur-hawtian.packages.${pkgs.system}.vimPlugins.gh-actions-nvim;
-    }
-    // (with pkgs-unstable; {
-      telescope-fzf-native-nvim = vimPlugins.telescope-fzf-native-nvim;
-      markdown-preview-nvim = vimPlugins.markdown-preview-nvim;
-    });
+  plugins = {
+    inherit (nur-hawtian.packages.${pkgs.system}.vimPlugins) gh-actions-nvim;
+    inherit (pkgs-unstable.vimPlugins) telescope-fzf-native-nvim;
+    inherit (pkgs-unstable.vimPlugins) markdown-preview-nvim;
+  };
 
-  bins = with pkgs; {
-    fzf = fzf;
-    stylua = stylua;
-    lua-language-server = lua-language-server;
+  bins = with pkgs-unstable; {
+    inherit fzf stylua lua-language-server statix;
   };
 
   nixAwareNvimConfig = pkgs.stdenv.mkDerivation {
