@@ -6,7 +6,7 @@
   ...
 }: let
   monolisa = pkgs.stdenv.mkDerivation {
-    name = "monolisa";
+    pname = "monolisa";
     version = "2.012";
     src = "${secrets-hawtian}/fonts/";
 
