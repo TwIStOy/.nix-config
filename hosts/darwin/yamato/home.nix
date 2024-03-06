@@ -1,5 +1,6 @@
 {
   programs.kitty.settings.font_size = 22;
+  suits.neovide.extraSettings.font.size = 22;
 
   programs.ssh = {
     matchBlocks = {
