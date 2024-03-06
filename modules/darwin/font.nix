@@ -25,11 +25,11 @@
   };
 
   maple-font = pkgs.stdenv.mkDerivation rec {
-    name = "maple-font";
-    version = "v7.0-beta7";
+    pname = "maple-font";
+    version = "v7.0-beta8";
     src = builtins.fetchurl {
-      url = "https://github.com/subframe7536/maple-font/releases/download/${version}/nerdfont.zip";
-      sha256 = "1nr7p8x1s3hli0s8r67agpd607nlcjd206qx1l0p7bqd8pcy8cg9";
+      url = "https://github.com/subframe7536/maple-font/releases/download/${version}/MapleMono-nf.zip";
+      sha256 = "08a1q6dfxmb259wd80aqnkabb24yaf25a12dcf6pik9n9rmxg5b5";
     };
     nativeBuildInputs = with pkgs; [unzip];
     sourceRoot = ".";
