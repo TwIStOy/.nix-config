@@ -16,6 +16,8 @@
 
   bins = with pkgs-unstable; {
     inherit fzf stylua lua-language-server statix;
+    clangd = llvmPackages_17.clang-unwrapped;
+    clang-format = llvmPackages_17.clang-unwrapped;
   };
 
   nixAwareNvimConfig = pkgs.stdenv.mkDerivation {
@@ -31,6 +33,7 @@
       (builtins.toJSON {
         pkgs = plugins;
         bin = lib.mapAttrs (name: pkg: "${pkg}/bin/${name}") bins;
+        try_nix_only = true;
       });
 
     installPhase = ''
