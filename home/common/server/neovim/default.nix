@@ -18,12 +18,16 @@
     inherit fzf stylua lua-language-server statix;
     clangd = llvmPackages_17.clang-unwrapped;
     clang-format = llvmPackages_17.clang-unwrapped;
+    inherit (python312Packages) black;
+    inherit (pkgs) rust-analyzer rustfmt;
   };
 
   nixAwareNvimConfig = pkgs.stdenv.mkDerivation {
     name = "nix-aware-nvim-config";
 
-    buildInputs = lib.mapAttrsToList (_: pkg: pkg) plugins;
+    buildInputs =
+      (lib.mapAttrsToList (_: pkg: pkg) plugins)
+      ++ (lib.mapAttrsToList (_: pkg: pkg) bins);
 
     phases = ["installPhase"];
 
