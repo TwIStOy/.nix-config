@@ -1,13 +1,8 @@
 {
   pkgs,
   pkgs-unstable,
-  system,
-  lib,
   ...
-}: let
-  settingsFormat = pkgs.formats.toml {};
-  isDarwin = lib.strings.hasSuffix "darwin" system;
-in {
+}: {
   suits.neovide = {
     enable = true;
     package = pkgs-unstable.neovide;
@@ -26,6 +21,7 @@ in {
         size = 20;
         features."MonoLisa Nerd Font" = ["+ss11" "+zero" "-calt" "+ss10" "+ss02" "+ss17" "+ss13" "+ss04"];
       };
+      vsync = true;
     };
   };
 }
