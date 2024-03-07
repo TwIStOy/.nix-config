@@ -8,6 +8,12 @@
     enable = true;
     package = pkgs-unstable.neovide;
     skipPackage = system == "x86_64-darwin";
+    createRemoteHostWrappers = [
+      "poi.remote"
+      "poi.local"
+      "dev.work.local"
+      "dev.work.local.simple"
+    ];
     settings = {
       maximized = false;
       srgb = true;

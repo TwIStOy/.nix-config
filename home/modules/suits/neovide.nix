@@ -73,6 +73,14 @@ in {
       '';
     };
 
+    createRemoteHostWrappers = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = ''
+        List of remote hosts to create wrappers for.
+      '';
+    };
+
     # Remove this option after https://github.com/NixOS/nixpkgs/issues/290611 is fixed
     skipPackage = lib.mkOption {
       type = lib.types.bool;
@@ -84,12 +92,43 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = lib.lists.optional (!cfg.skipPackage) cfg.package;
+    home.packages = let
+      mkNeovideWrapper = host:
+        pkgs.writeShellScriptBin "neovide-${host}" ''
+          #!/bin/bash
+          neovide --neovim-bin "$XDG_CONFIG_HOME/neovide/remote-hosts/${host}" $@
+        '';
+    in
+      # neovideWrappers
+      (lib.lists.forEach cfg.createRemoteHostWrappers mkNeovideWrapper)
+      ++ (lib.lists.optional (!cfg.skipPackage) cfg.package);
 
-    xdg.configFile."neovide/config.toml".source = genConfig ({
-        inherit (cfg.settings) maximized frame srgb idle;
-        neovim-bin = "${cfg.settings.neovim-bin}/bin/nvim";
-      }
-      // cfg.extraSettings);
+    xdg.configFile = let
+      mkRemoteNvimBin = host: {
+        "neovide/remote-hosts/${host}" = {
+          source = pkgs.writeShellScript host ''
+            #!/bin/bash
+            ssh ${host} "bash -l -c \"nvim $@\""
+          '';
+          force = true;
+          executable = true;
+        };
+      };
+    in
+      lib.mkMerge (
+        [
+          {
+            "neovide/config.toml" = {
+              source = genConfig ({
+                  inherit (cfg.settings) maximized frame srgb idle;
+                  neovim-bin = "${cfg.settings.neovim-bin}/bin/nvim";
+                }
+                // cfg.extraSettings);
+              force = true;
+            };
+          }
+        ]
+        ++ (lib.lists.forEach cfg.createRemoteHostWrappers mkRemoteNvimBin)
+      );
   };
 }
