@@ -1,11 +1,13 @@
 {
   pkgs,
   pkgs-unstable,
+  system,
   ...
 }: {
   suits.neovide = {
     enable = true;
     package = pkgs-unstable.neovide;
+    skipPackage = system == "x86_64-darwin";
     settings = {
       maximized = false;
       srgb = true;

@@ -72,10 +72,19 @@ in {
         Extra settings to add to the config.toml file.
       '';
     };
+
+    # Remove this option after https://github.com/NixOS/nixpkgs/issues/290611 is fixed
+    skipPackage = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Skip the package installation.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [cfg.package];
+    home.packages = lib.lists.optional (!cfg.skipPackage) cfg.package;
 
     xdg.configFile."neovide/config.toml".source = genConfig ({
         inherit (cfg.settings) maximized frame srgb idle;
