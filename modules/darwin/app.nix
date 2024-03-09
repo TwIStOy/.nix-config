@@ -33,6 +33,7 @@
       "osx-cross/arm"
       "leoafarias/fvm"
       "qmk/qmk"
+      "FelixKratz/formulae"
     ];
 
     brews = [
@@ -65,6 +66,7 @@
       "jetbrains-toolbox"
       "tailscale"
       "neovide"
+      "wireshark"
     ];
   };
 }

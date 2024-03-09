@@ -2,7 +2,6 @@
   config,
   lib,
   username,
-  pkgs,
   pkgs-unstable,
   ...
 }: let

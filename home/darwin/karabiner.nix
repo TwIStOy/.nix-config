@@ -105,6 +105,27 @@
           ];
         }
         {
+          description = "ALT+z: Toggle zoom-fullscreen";
+          manipulators = [
+            {
+              type = "basic";
+              from = {
+                key_code = "z";
+                modifiers = {
+                  mandatory = [
+                    "left_option"
+                  ];
+                };
+              };
+              to = [
+                {
+                  shell_command = "${pkgs-unstable.yabai}/bin/yabai -m window --toggle zoom-fullscreen";
+                }
+              ];
+            }
+          ];
+        }
+        {
           description = "ALT+h: Focus left";
           manipulators = [
             {
@@ -551,5 +572,8 @@
     ];
   };
 in {
-  xdg.configFile."karabiner/karabiner.json".text = builtins.toJSON json;
+  xdg.configFile."karabiner/karabiner.json" = {
+    text = builtins.toJSON json;
+    force = true;
+  };
 }
