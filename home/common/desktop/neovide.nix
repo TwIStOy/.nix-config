@@ -13,6 +13,7 @@
       "poi.local"
       "dev.work.local"
       "dev.work.local.simple"
+      "dev.work.remote"
     ];
     settings = {
       maximized = false;
