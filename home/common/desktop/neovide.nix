@@ -2,12 +2,15 @@
   pkgs,
   pkgs-unstable,
   system,
+  lib,
   ...
-}: {
+}: let
+  isDarwin = lib.strings.hasSuffix "darwin" system;
+in {
   suits.neovide = {
     enable = true;
     package = pkgs-unstable.neovide;
-    skipPackage = system == "x86_64-darwin";
+    skipPackage = isDarwin;
     createRemoteHostWrappers = [
       "poi.remote"
       "poi.local"

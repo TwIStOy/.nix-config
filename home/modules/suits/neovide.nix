@@ -7,6 +7,12 @@
   cfg = config.suits.neovide;
   settingsFormat = pkgs.formats.toml {};
   genConfig = opts: settingsFormat.generate "config.toml" opts;
+  neovideBin =
+    if pkgs.stdenv.isDarwin
+    then
+      # https://github.com/neovide/neovide/issues/915
+      "/Applications/Neovide.app/Contents/MacOS/neovide"
+    else "neovide";
 in {
   options.suits.neovide = {
     enable = lib.mkEnableOption "neovide";
@@ -96,12 +102,18 @@ in {
       mkNeovideWrapper = host:
         pkgs.writeShellScriptBin "neovide-${host}" ''
           #!/bin/bash
-          neovide --neovim-bin "$XDG_CONFIG_HOME/neovide/remote-hosts/${host}" $@
+          ${neovideBin} --neovim-bin "$XDG_CONFIG_HOME/neovide/remote-hosts/${host}" $@
         '';
     in
       # neovideWrappers
       (lib.lists.forEach cfg.createRemoteHostWrappers mkNeovideWrapper)
-      ++ (lib.lists.optional (!cfg.skipPackage) cfg.package);
+      ++ (lib.lists.optional (!cfg.skipPackage) cfg.package)
+      ++ (lib.lists.optional pkgs.stdenv.isDarwin (
+        pkgs.writeShellScriptBin "neovide" ''
+          #!/bin/bash
+          ${neovideBin} $@
+        ''
+      ));
 
     xdg.configFile = let
       mkRemoteNvimBin = host: {
