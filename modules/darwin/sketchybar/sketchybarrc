@@ -52,9 +52,14 @@ source $ITEM_DIR/front_app.sh
 source $ITEM_DIR/media.sh
 
 # -- Right Side Items --
+# source $ITEM_DIR/network.sh
 source $ITEM_DIR/calendar.sh
 source $ITEM_DIR/volume.sh
 source $ITEM_DIR/battery.sh
+sketchybar --add item wifi right                         \
+           --set wifi    script="$PLUGIN_DIR/wifi.sh"    \
+                         background.padding_right=12     \
+                         update_freq=5
 source $ITEM_DIR/cpu.sh
 
 
