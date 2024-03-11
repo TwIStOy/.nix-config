@@ -29,6 +29,7 @@
       v = "nvim";
       j = "just";
       lg = "lazygit";
+      tdev = "tmux atta -t dev || tmux new -s dev";
     };
   };
 }

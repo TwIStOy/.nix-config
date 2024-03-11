@@ -8,6 +8,9 @@
         border = "single";
       };
       notARepository = "skip";
+      git = {
+        parseEmoji = true;
+      };
     };
   };
 }

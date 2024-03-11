@@ -3,6 +3,8 @@
     startAgent = true;
   };
 
+  environment.enableAllTerminfo = true;
+
   environment.systemPackages = with pkgs; [
     wget
     curl
