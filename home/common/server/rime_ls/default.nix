@@ -10,5 +10,6 @@
   xdg.dataFile.rime-ls-files = {
     source = ./files;
     recursive = true;
+    force = true;
   };
 }
