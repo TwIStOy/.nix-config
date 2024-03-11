@@ -1,9 +1,10 @@
 {
   pkgs,
+  pkgs-unstable,
   nur-hawtian,
   ...
 }: let
-  inherit (pkgs) gcc;
+  inherit (pkgs-unstable) gcc;
   nixAwareClangdConfig = pkgs.stdenv.mkDerivation {
     name = "nix-aware-clangd-config";
 
