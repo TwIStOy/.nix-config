@@ -4,9 +4,9 @@
   ...
 }: let
   pkgs = inputs.nixpkgs.legacyPackages.${system};
-  devenv = inputs.devenv;
-  stdenv = pkgs.stdenv;
-  lib = pkgs.lib;
+  inherit (inputs) devenv;
+  inherit (pkgs) stdenv;
+  inherit (pkgs) lib;
 in
   devenv.lib.mkShell {
     inherit inputs pkgs;
