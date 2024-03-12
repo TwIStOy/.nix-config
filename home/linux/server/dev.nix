@@ -6,9 +6,17 @@
   home.packages =
     (with pkgs; [
       gdb
-      direnv
     ])
     ++ (with pkgs-unstable; [
       jetbrains.gateway
     ]);
+
+  programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      nix-direnv.enable = true;
+    };
+  };
 }
