@@ -13,6 +13,7 @@
 
   nixpkgs.overlays = [
     args.neovim-nightly-overlay.overlay
+    args.fenix.overlays.default
   ];
 
   nix.settings = {

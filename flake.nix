@@ -98,6 +98,11 @@
 
     # devenv, construct a development environment easily
     devenv.url = "github:cachix/devenv";
+
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
