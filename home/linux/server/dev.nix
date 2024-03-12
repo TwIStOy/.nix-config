@@ -6,6 +6,7 @@
   home.packages =
     (with pkgs; [
       gdb
+      direnv
     ])
     ++ (with pkgs-unstable; [
       jetbrains.gateway
