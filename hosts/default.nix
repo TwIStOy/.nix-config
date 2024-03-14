@@ -23,10 +23,6 @@
         inherit system;
         config.allowUnfree = true;
       };
-      pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
     }
     // inputs;
   darwin-hosts = import ./darwin {
