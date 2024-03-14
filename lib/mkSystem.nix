@@ -5,7 +5,7 @@
   hasSuffix = inputs.nixpkgs.lib.strings.hasSuffix;
   isDarwin = hasSuffix "darwin" system;
   constants = import ../constants.nix;
-  mkSystem =
+  mkSystemImpl =
     if isDarwin
     then inputs.nix-darwin.lib.darwinSystem
     else inputs.nixpkgs.lib.nixosSystem;
@@ -18,11 +18,26 @@
   ];
   nixosModules = [];
 in
-  mkSystem {
-    inherit inputs system;
+  {modules}:
+    mkSystemImpl {
+      inherit inputs system;
 
-    modules =
-    (if isDarwin then darwinModules else nixosModules)
-    ([
-    ]);
-  }
+      modules =
+        commonModules
+        ++ modules
+        ++ (
+          if isDarwin
+          then darwinModules
+          else nixosModules
+        )
+        [
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              # extraSpecialArgs = ;
+            };
+          }
+        ];
+    }
