@@ -1,4 +1,4 @@
-{utils, ...}:
-with utils.paths; {
+{myUtils, ...}:
+with myUtils.paths; {
   imports = readModules ./.;
 }

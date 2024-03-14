@@ -1,5 +1,5 @@
 {nixpkgs}: {
-  paths = import ./paths {
+  paths = import ./paths.nix {
     inherit nixpkgs;
   };
 }

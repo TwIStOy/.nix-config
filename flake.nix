@@ -8,11 +8,8 @@
     pre-commit-hooks,
     ...
   }: let
-    utils = import ./lib {inherit (inputs) nixpkgs;};
-
     configurations = import ./hosts ({
         inherit inputs;
-        inherit utils;
       }
       // inputs);
 
@@ -34,24 +31,23 @@
         inherit self inputs system;
       };
     });
-
-    tests = {
-      home-modules-xxx = import ./home/modules {inherit utils;};
-    };
   in
     nixpkgs.lib.attrsets.mergeAttrsList [
       configurations
       formatter
       checks
       shells
-      tests
     ];
 
   inputs = {
     # Official NixOS package source, using nixos's stable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     flake-utils.url = "github:numtide/flake-utils";
+
+    flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
     # for macos
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";

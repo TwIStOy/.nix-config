@@ -1,1 +1,1 @@
-# Custom modules `home-manager`
+# Custom `home-manager` modules 

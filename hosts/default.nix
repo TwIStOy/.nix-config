@@ -10,10 +10,11 @@
 }: let
   constants = import ../helpers/constants.nix;
   ht-fn = import ../helpers/fn {inherit (inputs) nixpkgs;};
+  myUtils = import ../lib {inherit (inputs) nixpkgs;};
   buildExtraSpecialArgs = system:
     {
       inherit (constants) username userfullname useremail;
-      inherit ht-fn system;
+      inherit ht-fn system myUtils;
       pkgs-darwin = import inputs.nixpkgs-darwin {
         inherit system;
         config.allowUnfree = true;
@@ -34,6 +35,7 @@
       buildExtraSpecialArgs
       inputs
       ht-fn
+      myUtils
       ;
   };
   nixos-hosts = import ./nixos {
@@ -45,6 +47,7 @@
       buildExtraSpecialArgs
       inputs
       ht-fn
+      myUtils
       ;
   };
 in
