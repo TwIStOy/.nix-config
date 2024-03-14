@@ -1,14 +1,28 @@
 {
-  nixpkgs,
-  nix-darwin,
+  inputs,
+  system,
 }: let
-  hasSuffix = nixpkgs.lib.strings.hasSuffix;
-  isDarwin = system: hasSuffix "darwin" system;
+  hasSuffix = inputs.nixpkgs.lib.strings.hasSuffix;
+  isDarwin = hasSuffix "darwin" system;
   constants = import ../constants.nix;
   mkSystem =
     if isDarwin
-    then nix-darwin.lib.darwinSystem
-    else nixpkgs.lib.nixosSystem;
+    then inputs.nix-darwin.lib.darwinSystem
+    else inputs.nixpkgs.lib.nixosSystem;
+
+  commonModules = [];
+  commonHMModules = [];
+  darwinModules = [
+    inputs.home-manager.darwinModules.home-manager
+    inputs.agenix.darwinModules.default
+  ];
+  nixosModules = [];
 in
   mkSystem {
+    inherit inputs system;
+
+    modules =
+    (if isDarwin then darwinModules else nixosModules)
+    ([
+    ]);
   }
