@@ -8,9 +8,11 @@
     pre-commit-hooks,
     ...
   }: let
+    utils = import ./lib {inherit (inputs) nixpkgs;};
+
     configurations = import ./hosts ({
         inherit inputs;
-        hyperSelf = self;
+        inherit utils;
       }
       // inputs);
 
@@ -32,12 +34,17 @@
         inherit self inputs system;
       };
     });
+
+    tests = {
+      home-modules-xxx = import ./home/modules {inherit utils;};
+    };
   in
     nixpkgs.lib.attrsets.mergeAttrsList [
       configurations
       formatter
       checks
       shells
+      tests
     ];
 
   inputs = {

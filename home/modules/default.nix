@@ -1,3 +1,4 @@
-{ht-fn, ...}: {
-  imports = ht-fn.listDirectory ./.;
+{utils, ...}:
+with utils.paths; {
+  imports = readModules ./.;
 }

@@ -10,11 +10,11 @@ default:
   @echo "System: {{system}}, Host: {{host}}"
   @{{just_executable()}} {{host}}
 
-yamato use_nom="yes" details="no": (_macos_rebuild "yamato" use_nom details)
+yamato use_nom="yes" details="yes": (_macos_rebuild "yamato" use_nom details)
 
-yukikaze use_nom="yes" details="no": (_macos_rebuild "yukikaze" use_nom details)
+yukikaze use_nom="yes" details="yes": (_macos_rebuild "yukikaze" use_nom details)
 
-poi use_nom="yes" details="no": (_nixos_rebuild "poi" use_nom details)
+poi use_nom="yes" details="yes": (_nixos_rebuild "poi" use_nom details)
 
 _macos_rebuild hostname use_nom="yes" details="no": && (_macos_switch hostname details)
   @{{ if use_nom == "yes" { "nom" } else { "nix" } }} build .#darwinConfigurations.{{hostname}}.system --extra-experimental-features 'nix-command flakes'

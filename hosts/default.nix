@@ -6,7 +6,6 @@
   home-manager,
   agenix,
   flake-utils,
-  hyperSelf,
   ...
 }: let
   constants = import ../helpers/constants.nix;
@@ -14,7 +13,7 @@
   buildExtraSpecialArgs = system:
     {
       inherit (constants) username userfullname useremail;
-      inherit ht-fn system hyperSelf;
+      inherit ht-fn system;
       pkgs-darwin = import inputs.nixpkgs-darwin {
         inherit system;
         config.allowUnfree = true;
@@ -35,7 +34,6 @@
       buildExtraSpecialArgs
       inputs
       ht-fn
-      hyperSelf
       ;
   };
   nixos-hosts = import ./nixos {
@@ -47,7 +45,6 @@
       buildExtraSpecialArgs
       inputs
       ht-fn
-      hyperSelf
       ;
   };
 in

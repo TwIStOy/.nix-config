@@ -1,5 +1,5 @@
 {
-  hyperSelf,
+  self,
   pkgs,
   config,
   username,
@@ -11,7 +11,7 @@
     owner ? "root",
     mode ? "400",
   }: {
-    file = "${hyperSelf}/secrets/${file}";
+    file = "${self}/secrets/${file}";
     inherit owner mode;
   };
 in {
